@@ -1,0 +1,500 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>한글 맞춤법 학습지 · 이재식국어학원</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --g:#1f8a52; --g-l:#e8f4ee; --g-d:#166b3f;
+  --o:#d2691e; --o-l:#fdf1e7;
+  --ink:#1c1c1c; --mid:#555; --soft:#8a8a8a;
+  --line:#e2e2e2; --bg:#f6f7f6; --card:#fff;
+  --red:#d7263d; --amber:#9a6b00;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg); color:var(--ink); line-height:1.65;
+  font-size:16px; word-break:keep-all; overflow-wrap:anywhere;
+}
+.wrap{max-width:860px;margin:0 auto;padding:0 16px 96px}
+
+/* ── 머리 ── */
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:20}
+.hd{max-width:860px;margin:0 auto;padding:12px 16px;display:flex;align-items:center;gap:10px}
+.hd .bk{border:0;background:none;font-size:22px;line-height:1;color:var(--mid);cursor:pointer;padding:4px 6px;margin-left:-6px;display:none}
+.hd .tt{font-weight:700;font-size:15px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hd .who{font-size:12px;color:var(--soft);white-space:nowrap}
+.hd .hm{flex-shrink:0;text-decoration:none;font-size:12px;font-weight:700;color:var(--mid);
+  border:1px solid var(--line);border-radius:999px;padding:4px 11px;line-height:1.5}
+.hd .hm:hover{background:var(--bg)}
+.chip{display:inline-block;background:var(--g);color:#fff;font-size:11px;font-weight:700;
+  padding:2px 8px;border-radius:999px;vertical-align:2px}
+
+/* ── 공통 ── */
+.card{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:18px;margin:14px 0}
+h2{font-size:19px;margin:22px 0 6px;font-weight:700}
+h3{font-size:15px;margin:18px 0 8px;font-weight:700;color:var(--g-d)}
+p.lead{color:var(--mid);font-size:14px;margin:0 0 14px}
+.btn{display:inline-block;border:1px solid var(--g);background:var(--g);color:#fff;
+  font:inherit;font-weight:700;font-size:15px;padding:11px 20px;border-radius:9px;cursor:pointer;
+  text-decoration:none;text-align:center}
+.btn:active{background:var(--g-d)}
+.btn.sec{background:#fff;color:var(--g-d)}
+.btn.wide{display:block;width:100%}
+.btn[disabled]{opacity:.45;cursor:default}
+.row{display:flex;gap:10px;flex-wrap:wrap}
+.muted{color:var(--soft);font-size:13px}
+
+/* ── 단원 목록 ── */
+.ulist{display:grid;gap:10px;margin-top:6px}
+.uitem{background:var(--card);border:1px solid var(--line);border-radius:12px;padding:14px 16px;
+  display:flex;align-items:center;gap:13px;cursor:pointer}
+.uitem:active{background:#fafafa}
+.uno{width:30px;height:30px;flex:none;border-radius:8px;background:var(--g-l);color:var(--g-d);
+  font-weight:700;font-size:14px;display:grid;place-items:center}
+.uinfo{flex:1;min-width:0}
+.uinfo b{display:block;font-size:15.5px;font-weight:700}
+.uinfo span{font-size:12.5px;color:var(--soft)}
+.ubar{width:54px;flex:none;text-align:right;font-size:12px;color:var(--soft)}
+.bar{height:4px;background:var(--line);border-radius:3px;margin-top:4px;overflow:hidden}
+.bar i{display:block;height:100%;background:var(--g);border-radius:3px}
+
+/* ── 탭 ── */
+.tabs{display:flex;gap:6px;margin:16px 0 4px}
+.tabs button{flex:1;border:1px solid var(--line);background:var(--card);color:var(--mid);
+  font:inherit;font-size:14px;font-weight:500;padding:10px 4px;border-radius:9px;cursor:pointer}
+.tabs button.on{background:var(--g);border-color:var(--g);color:#fff;font-weight:700}
+
+/* ── 규정 상자 ── */
+.law{background:var(--g-l);border-left:3px solid var(--g);border-radius:0 10px 10px 0;
+  padding:14px 16px;margin:12px 0;font-size:14.5px}
+.law .lab{display:inline-block;background:var(--g);color:#fff;font-size:11px;font-weight:700;
+  padding:2px 9px;border-radius:999px;margin-bottom:8px}
+.law div.l{margin:3px 0}
+.law div.l.i1{padding-left:14px;color:#2d5e45}
+.law b{color:var(--g-d)}
+.law em{font-style:normal;color:var(--o);font-weight:700}
+
+/* ── 문제 ── */
+.qn{display:flex;align-items:baseline;gap:9px;margin-bottom:10px}
+.qn i{font-style:normal;background:var(--g);color:#fff;font-size:12px;font-weight:700;
+  min-width:26px;text-align:center;padding:2px 6px;border-radius:7px;flex:none}
+.qn .qt{font-size:16px;font-weight:500;flex:1}
+.src{font-size:11.5px;color:var(--soft);margin:-4px 0 10px 35px}
+.bogi{background:#fafafa;border:1px solid var(--line);border-radius:9px;padding:12px 14px;
+  margin:10px 0;font-size:14px}
+.bogi .lab{display:inline-block;background:var(--o);color:#fff;font-size:10.5px;font-weight:700;
+  padding:1px 8px;border-radius:999px;margin-bottom:7px}
+.bogi div{margin:2px 0}
+.opts{display:grid;gap:8px;margin-top:12px}
+.opt{border:1px solid var(--line);background:var(--card);border-radius:10px;padding:11px 14px;
+  font:inherit;font-size:15px;text-align:left;cursor:pointer;color:var(--ink);line-height:1.55}
+.opt:active{background:#fafafa}
+.opt.sel{border-color:var(--g);background:var(--g-l)}
+.opt.ok{border-color:var(--g);background:var(--g-l);font-weight:700}
+.opt.no{border-color:var(--red);background:#fdeef0}
+.opt.dim{opacity:.55}
+input.txt,select.txt{width:100%;font:inherit;font-size:16px;padding:11px 13px;border:1px solid var(--line);
+  border-radius:10px;background:var(--card)}
+select.txt{appearance:none;background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='12' height='8'><path d='M1 1l5 5 5-5' stroke='%23888' stroke-width='2' fill='none'/></svg>");background-repeat:no-repeat;background-position:right 14px center;padding-right:34px;cursor:pointer}
+input.txt:focus,select.txt:focus{outline:2px solid var(--g);outline-offset:-2px;border-color:var(--g)}
+input.txt.ok{border-color:var(--g);background:var(--g-l)}
+input.txt.no{border-color:var(--red);background:#fdeef0}
+
+/* ── 채점 ── */
+.fb{margin-top:12px;border-radius:10px;padding:12px 14px;font-size:14px;line-height:1.6}
+.fb.ok{background:var(--g-l);border:1px solid #bfe0cd}
+.fb.no{background:#fdeef0;border:1px solid #f3c6cd}
+.fb b.v{display:block;margin-bottom:5px}
+.fb .why{color:var(--mid);font-size:13.5px}
+.sol{margin-top:10px;border-top:1px dashed #cdd8d2;padding-top:10px}
+.sol .tag{display:inline-block;background:#fff;border:1px solid var(--line);color:var(--mid);
+  font-size:11px;padding:1px 8px;border-radius:999px;margin-bottom:6px}
+.sol .flag{display:inline-block;font-size:11px;font-weight:700;padding:1px 8px;border-radius:999px;
+  margin-bottom:6px;margin-left:5px;color:#fff}
+.sol ul{margin:8px 0 0;padding-left:0;list-style:none}
+.sol li{font-size:13.5px;color:var(--mid);margin:4px 0;display:flex;gap:7px}
+.sol li b{color:var(--ink);flex:none}
+
+/* ── 진행 ── */
+.prog{display:flex;align-items:center;gap:10px;margin:14px 0 2px;font-size:13px;color:var(--soft)}
+.prog .bar{flex:1;margin:0}
+.nav{position:fixed;left:0;right:0;bottom:0;background:var(--card);border-top:1px solid var(--line);
+  padding:10px 16px calc(10px + env(safe-area-inset-bottom));z-index:20}
+.nav .in{max-width:860px;margin:0 auto;display:flex;gap:10px}
+.nav .in .btn{flex:1}
+
+/* ── 결과 ── */
+.score{text-align:center;padding:22px 0 6px}
+.score .n{font-size:46px;font-weight:700;color:var(--g);line-height:1.1}
+.score .s{color:var(--mid);font-size:14px}
+.tbl{width:100%;border-collapse:collapse;font-size:14px;margin-top:10px}
+.tbl th,.tbl td{border-bottom:1px solid var(--line);padding:8px 6px;text-align:left}
+.tbl th{font-size:12px;color:var(--soft);font-weight:500}
+.wrongs{display:flex;flex-wrap:wrap;gap:6px;margin-top:8px}
+.wrongs span{background:#fdeef0;color:var(--red);font-size:13px;font-weight:700;
+  padding:3px 9px;border-radius:7px}
+code.rc{display:block;background:#f2f4f3;border:1px solid var(--line);border-radius:9px;
+  padding:11px 13px;font-size:13px;margin:10px 0;word-break:break-all}
+
+/* ── 들어가기 ── */
+.gate{max-width:380px;margin:40px auto;padding:0 16px}
+.gate .card{padding:22px}
+.gate label{display:block;font-size:13px;color:var(--mid);margin:12px 0 5px;font-weight:500}
+.err{color:var(--red);font-size:13.5px;margin-top:10px;display:none}
+.foot{text-align:center;color:var(--soft);font-size:12px;margin-top:26px}
+@media(max-width:480px){ body{font-size:15.5px} .card{padding:15px} .wrap{padding:0 12px 96px} }
+</style>
+</head>
+<body>
+<header><div class="hd">
+  <button class="bk" id="bk" aria-label="뒤로">←</button>
+  <div class="tt" id="tt">한글 맞춤법 학습지</div>
+  <div class="who" id="who"></div>
+  <a class="hm" href="index.html">홈</a>
+</div></header>
+<div id="app" class="wrap"></div>
+<div class="nav" id="nav" style="display:none"><div class="in" id="navin"></div></div>
+
+<script>
+/* ===== 제출 주소 — 선생님 Apps Script 웹 앱 주소를 여기에 넣는다 ===== */
+const SUBMIT_URL = "https://script.google.com/macros/s/AKfycbx_9FAV1gPLUuwPcmP1rYd4_ASLrK-MzhVKinunxqEWGnYJxsvILI3pH4ycAbUOEd7Jkw/exec";
+/* ================================================================= */
+
+const S = { data:null, unit:null, mode:null, items:[], i:0, picked:null, done:[], user:null };
+const $ = (s,r)=>(r||document).querySelector(s);
+const el = (t,c,x)=>{const e=document.createElement(t); if(c)e.className=c; if(x!=null)e.textContent=x; return e;};
+const MODES = {concept:'개념', practice:'연습', sort:'갈래', fill:'채우기', exam:'기출'};
+
+function store(k,v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v);}catch(e){ return null; } }
+function prog(uid){ try{ return JSON.parse(store('p_'+uid)||'{}'); }catch(e){ return {}; } }
+function saveProg(uid,o){ store('p_'+uid, JSON.stringify(o)); }
+
+/* ── 들어가기 ── */
+function gate(){
+  $('#nav').style.display='none'; $('#bk').style.display='none'; $('#who').textContent='';
+  const a=$('#app'); a.innerHTML=''; a.className='gate';
+  const c=el('div','card');
+  c.appendChild(el('h2',null,'한글 맞춤법 학습지'));
+  c.appendChild(el('p','lead','이름과 학교, 출결번호를 넣고 들어오세요.'));
+  const ins={};
+  c.appendChild(el('label',null,'이름'));
+  ins.name=el('input','txt'); ins.name.type='text'; ins.name.placeholder='이름'; ins.name.autocomplete='off';
+  c.appendChild(ins.name);
+
+  c.appendChild(el('label',null,'학교'));
+  const sel=document.createElement('select'); sel.className='txt';
+  [['','학교를 고르세요'],['국제고1','국제고1'],['신현고1','신현고1'],['대인고1','대인고1']]
+    .forEach(([v,t])=>{ const o=document.createElement('option'); o.value=v; o.textContent=t; sel.appendChild(o); });
+  ins.school=sel; c.appendChild(sel);
+
+  c.appendChild(el('label',null,'출결번호'));
+  ins.code=el('input','txt'); ins.code.type='tel'; ins.code.inputMode='numeric';
+  ins.code.maxLength=4; ins.code.placeholder='네 자리'; ins.code.autocomplete='off';
+  c.appendChild(ins.code);
+  const er=el('div','err','이름을 쓰고, 학교를 고르고, 출결번호 네 자리를 넣어 주세요.');
+  c.appendChild(er);
+  const b=el('button','btn wide','들어가기'); b.style.marginTop='18px';
+  b.onclick=()=>{
+    const v={name:ins.name.value.trim(), school:ins.school.value.trim(), code:ins.code.value.trim()};
+    if(!v.name||!v.school||!v.code){ er.style.display='block'; return; }
+    S.user=v; store('user', JSON.stringify(v)); home();
+  };
+  [ins.name, ins.code].forEach(i=>i.addEventListener('keydown',e=>{if(e.key==='Enter')b.click();}));
+  c.appendChild(b);
+  a.appendChild(c);
+  a.appendChild(el('div','foot','과제방에 들어갈 때 쓰는 이름과 출결번호 그대로 넣으세요.'));
+}
+
+/* ── 단원 목록 ── */
+function home(){
+  S.unit=null; S.mode=null; location.hash='';
+  $('#nav').style.display='none'; $('#bk').style.display='none';
+  $('#tt').textContent='한글 맞춤법 학습지';
+  $('#who').textContent=S.user? S.user.name : '';
+  const a=$('#app'); a.className='wrap'; a.innerHTML='';
+  a.appendChild(el('h2',null,'단원을 고르세요'));
+  a.appendChild(el('p','lead','개념을 읽고 연습 문제를 푼 다음, 기출 문항으로 확인합니다.'));
+  const list=el('div','ulist');
+  S.data.units.forEach((u,ix)=>{
+    const p=prog(u.id), tot=u.practice.length+u.sort.length+u.fillkeys.length+u.exam.length;
+    const dn=Object.keys(p).length;
+    const it=el('div','uitem');
+    it.appendChild(el('div','uno',String(ix+1)));
+    const inf=el('div','uinfo');
+    inf.appendChild(el('b',null,u.title));
+    inf.appendChild(el('span',null,u.law+' · 문제 '+tot+'개'));
+    it.appendChild(inf);
+    const r=el('div','ubar');
+    r.appendChild(el('div',null, tot? Math.round(dn/tot*100)+'%' : ''));
+    const bar=el('div','bar'), fill=el('i'); fill.style.width=(tot?Math.min(100,dn/tot*100):0)+'%';
+    bar.appendChild(fill); r.appendChild(bar); it.appendChild(r);
+    it.onclick=()=>openUnit(u.id);
+    list.appendChild(it);
+  });
+  a.appendChild(list);
+  const t=el('div','card');
+  t.appendChild(el('h3',null,'푸는 법'));
+  const ul=el('div');
+  ['개념 — 조항을 먼저 읽습니다.',
+   '연습 · 갈래 · 채우기 — 조항을 바로 적용해 보는 문제입니다.',
+   '기출 — 실제 학교 시험 문항입니다. 해설이 함께 나옵니다.',
+   '푼 문제는 이 기기에 저장되어 다음에 이어서 풀 수 있습니다.'
+  ].forEach(x=>{const d=el('div',null,'· '+x); d.style.fontSize='14px'; d.style.color='var(--mid)'; ul.appendChild(d);});
+  t.appendChild(ul); a.appendChild(t);
+  window.scrollTo(0,0);
+}
+
+/* ── 단원 ── */
+function openUnit(id){
+  S.unit=S.data.units.find(u=>u.id===id);
+  location.hash=id;
+  $('#bk').style.display='block';
+  $('#tt').textContent=S.unit.title;
+  showTabs('concept');
+}
+function showTabs(mode){
+  S.mode=mode; S.i=0; S.picked=null;
+  const a=$('#app'); a.className='wrap'; a.innerHTML='';
+  const u=S.unit;
+  const tb=el('div','tabs');
+  [['concept','개념'],['practice','연습'],['sort','갈래'],['fill','채우기'],['exam','기출']].forEach(([k,lb])=>{
+    const n = k==='concept'? u.concept.length : k==='fill'? u.fillkeys.length : u[k].length;
+    if(!n) return;
+    const b=el('button',k===mode?'on':null,lb);
+    b.onclick=()=>showTabs(k); tb.appendChild(b);
+  });
+  a.appendChild(tb);
+  if(mode==='concept'){ concept(a); return; }
+  S.items = mode==='fill' ? fillItems(u) : u[mode].map((q,ix)=>({...q, idx:ix}));
+  S.done = [];
+  $('#nav').style.display='block';
+  quiz();
+}
+function concept(a){
+  $('#nav').style.display='none';
+  const u=S.unit;
+  u.concept.forEach(c=>{
+    const b=el('div','law');
+    if(c.head) b.appendChild(el('span','lab',c.head));
+    c.lines.forEach(l=>{
+      const d=el('div','l'+(l.i?' i1':''));
+      d.innerHTML=mark(l.t);
+      b.appendChild(d);
+    });
+    a.appendChild(b);
+  });
+  const go=el('button','btn wide','연습 문제 풀기'); go.style.marginTop='16px';
+  go.onclick=()=>showTabs(u.practice.length?'practice':(u.sort.length?'sort':'exam'));
+  a.appendChild(go);
+  window.scrollTo(0,0);
+}
+function esc(s){ return String(s).replace(/[&<>"]/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c])); }
+function mark(t){
+  let h=esc(t);
+  h=h.replace(/\[([^\]]+)\]/g,'<b>[$1]</b>');
+  h=h.replace(/([ⓐ-ⓩ])/g,'<em>$1</em>');
+  return h;
+}
+function fillItems(u){
+  const out=[];
+  u.fillkeys.forEach((k,ix)=>{
+    const n=ix+1;
+    const line=u.filllines.find(l=>l.t.includes('{{'+n+'}}'));
+    const q = line ? (line.hang? line.hang+' ' : '')+line.t.replace(/\{\{(\d+)\}\}/g,(m,d)=> +d===n ? '（　　）' : '…') : '빈칸 '+n;
+    out.push({t:'write', q:q, ans:k, idx:ix});
+  });
+  return out;
+}
+
+/* ── 문제 풀기 ── */
+function quiz(){
+  const a=$('#app');
+  [...a.querySelectorAll('.qcard,.prog')].forEach(n=>n.remove());
+  const u=S.unit, it=S.items[S.i];
+  if(!it){ result(); return; }
+
+  const pr=el('div','prog');
+  pr.appendChild(el('span',null,(S.i+1)+' / '+S.items.length));
+  const bar=el('div','bar'), f=el('i'); f.style.width=(S.i/S.items.length*100)+'%';
+  bar.appendChild(f); pr.appendChild(bar);
+  pr.appendChild(el('span',null,MODES[S.mode]));
+  a.appendChild(pr);
+
+  const c=el('div','card qcard');
+  const qn=el('div','qn');
+  qn.appendChild(el('i',null,String(S.i+1)));
+  const qt=el('div','qt'); qt.textContent=it.q; qn.appendChild(qt);
+  c.appendChild(qn);
+  if(it.src) c.appendChild(el('div','src','출처 '+it.src));
+  if(it.bogi && it.bogi.length){
+    const b=el('div','bogi'); b.appendChild(el('span','lab','보기'));
+    it.bogi.forEach(x=>b.appendChild(el('div',null,x)));
+    c.appendChild(b);
+  }
+  const box=el('div','opts'); c.appendChild(box);
+  S.inputs=null;
+  if(it.t==='write'){
+    const i=el('input','txt'); i.placeholder='답을 쓰세요'; i.autocomplete='off';
+    i.addEventListener('keydown',e=>{ if(e.key==='Enter') submit(); });
+    box.appendChild(i); S.inputs=i;
+    setTimeout(()=>i.focus(),60);
+  }else{
+    it.opts.forEach(o=>{
+      const b=el('button','opt',o);
+      b.onclick=()=>{ [...box.children].forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); S.picked=o; navBtn(); };
+      box.appendChild(b);
+    });
+  }
+  a.appendChild(c);
+  S.picked=null; navBtn();
+  window.scrollTo(0,0);
+}
+function navBtn(){
+  const n=$('#navin'); n.innerHTML='';
+  const graded = S.graded;
+  if(graded){
+    const b=el('button','btn', S.i+1>=S.items.length?'결과 보기':'다음 문제');
+    b.onclick=()=>{ S.graded=false; S.i++; quiz(); };
+    n.appendChild(b);
+  }else{
+    const b=el('button','btn','채점하기');
+    if(S.items[S.i] && S.items[S.i].t!=='write' && !S.picked) b.disabled=true;
+    b.onclick=submit; n.appendChild(b);
+  }
+}
+function norm(s){ return String(s).replace(/\s+/g,'').replace(/[.,·]/g,''); }
+function headMark(s){ const m=String(s).trim().match(/^[\u2460-\u2473\u24D0-\u24E9\u3260-\u327F\u24B6-\u24CF]|^[a-eA-E](?=[\s.):])/); return m?m[0]:null; }
+function isAns(opt, ans){
+  if(opt===ans) return true;
+  const h=headMark(opt);
+  return !!h && String(ans).includes(h);
+}
+function submit(){
+  const it=S.items[S.i]; if(!it) return;
+  let got, ok;
+  if(it.t==='write'){ got=S.inputs.value.trim(); if(!got) return; ok = norm(got)===norm(it.ans); }
+  else { if(!S.picked) return; got=S.picked; ok = isAns(got, it.ans); }
+
+  const c=$('.qcard');
+  if(it.t==='write'){ S.inputs.classList.add(ok?'ok':'no'); S.inputs.disabled=true; }
+  else{
+    [...$('.opts',c).children].forEach(b=>{
+      b.classList.remove('sel'); b.disabled=true;
+      if(isAns(b.textContent, it.ans)) b.classList.add('ok');
+      else if(b.textContent===got) b.classList.add('no');
+      else b.classList.add('dim');
+    });
+  }
+  const fb=el('div','fb '+(ok?'ok':'no'));
+  fb.appendChild(el('b','v', ok?'맞았습니다':'틀렸습니다 — 정답 '+it.ans));
+  if(it.why) fb.appendChild(el('div','why','근거 '+it.why));
+  if(it.sol){
+    const s=el('div','sol');
+    if(it.sol.tag) s.appendChild(el('span','tag',it.sol.tag));
+    if(it.sol.flag){
+      const m={'*':['정답 바로잡음','#1f8a52'],'!':['문항 오류','#d7263d'],'~':['자료 일부 누락','#9a6b00']}[it.sol.flag];
+      if(m){ const g=el('span','flag',m[0]); g.style.background=m[1]; s.appendChild(g); }
+    }
+    s.appendChild(el('div',null,it.sol.text));
+    if(it.sol.opts && it.sol.opts.length){
+      const ul=el('ul');
+      it.sol.opts.forEach(([k,v])=>{ const li=el('li'); li.appendChild(el('b',null,k||'·')); li.appendChild(el('span',null,v)); ul.appendChild(li); });
+      s.appendChild(ul);
+    }
+    fb.appendChild(s);
+  }
+  c.appendChild(fb);
+  S.done.push({n:S.i+1, ok:ok, q:it.q, ans:it.ans, got:(headMark(got)||got)});
+  const p=prog(S.unit.id); p[S.mode+':'+it.idx]= ok?1:0; saveProg(S.unit.id,p);
+  S.graded=true; navBtn();
+  fb.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+
+/* ── 결과표 ── */
+function result(){
+  const a=$('#app'); a.className='wrap'; a.innerHTML='';
+  $('#nav').style.display='none';
+  const u=S.unit, d=S.done, ok=d.filter(x=>x.ok).length, tot=d.length;
+  const pct = tot? Math.round(ok/tot*100) : 0;
+  const wrong = d.filter(x=>!x.ok).map(x=>x.n);
+
+  const sc=el('div','card');
+  const s=el('div','score');
+  s.appendChild(el('div','n', ok+' / '+tot));
+  s.appendChild(el('div','s', u.title+' · '+MODES[S.mode]+' · 정답률 '+pct+'%'));
+  sc.appendChild(s);
+  if(wrong.length){
+    sc.appendChild(el('h3',null,'틀린 문제'));
+    const w=el('div','wrongs');
+    wrong.forEach(n=>w.appendChild(el('span',null,n+'번')));
+    sc.appendChild(w);
+  }
+  a.appendChild(sc);
+
+  if(wrong.length){
+    const t=el('div','card');
+    t.appendChild(el('h3',null,'다시 볼 것'));
+    const tb=el('table','tbl');
+    const hr=el('tr'); ['번호','내 답','정답'].forEach(h=>hr.appendChild(el('th',null,h)));
+    tb.appendChild(hr);
+    d.filter(x=>!x.ok).forEach(x=>{
+      const r=el('tr');
+      r.appendChild(el('td',null,x.n+'번'));
+      r.appendChild(el('td',null,x.got||'—'));
+      r.appendChild(el('td',null,x.ans));
+      tb.appendChild(r);
+    });
+    t.appendChild(tb); a.appendChild(t);
+  }
+
+  const sub=el('div','card');
+  sub.appendChild(el('h3',null,'선생님께 제출'));
+  const code = [S.user.name, S.user.school, u.title+' '+MODES[S.mode], ok+'/'+tot, wrong.join(',')||'없음'].join(' | ');
+  if(SUBMIT_URL){
+    const q = new URLSearchParams({action:'matchum',
+      name:S.user.name, school:S.user.school, code:S.user.code,
+      unit:u.title, mode:MODES[S.mode], ok:ok, tot:tot, wrong:wrong.join(',')});
+    const link=el('a','btn wide','제출하기');
+    link.href=SUBMIT_URL+(SUBMIT_URL.includes('?')?'&':'?')+q.toString();
+    link.target='_blank'; link.rel='noopener';
+    sub.appendChild(link);
+    sub.appendChild(el('div','muted','누르면 새 창이 열리고 ‘제출 완료’가 뜹니다. 그 창은 닫으면 됩니다.'));
+  }else{
+    sub.appendChild(el('div','muted','아래 결과를 복사해 선생님께 보내세요.'));
+    const cd=el('code','rc',code); sub.appendChild(cd);
+    const cp=el('button','btn sec wide','결과 복사하기');
+    cp.onclick=async()=>{ try{ await navigator.clipboard.writeText(code); cp.textContent='복사했습니다'; }
+      catch(e){ cp.textContent='길게 눌러 직접 복사하세요'; } };
+    sub.appendChild(cp);
+  }
+  a.appendChild(sub);
+
+  const r=el('div','row'); r.style.marginTop='14px';
+  const again=el('button','btn sec','다시 풀기'); again.onclick=()=>showTabs(S.mode);
+  const back=el('button','btn','다른 단원'); back.onclick=home;
+  r.appendChild(again); r.appendChild(back);
+  a.appendChild(r);
+  window.scrollTo(0,0);
+}
+
+/* ── 시작 ── */
+$('#bk').onclick=()=>{ if(S.mode && S.mode!=='concept'){ showTabs('concept'); } else { home(); } };
+window.addEventListener('hashchange',()=>{ if(!location.hash && S.unit) home(); });
+
+fetch('spell-data.json').then(r=>r.json()).then(d=>{
+  S.data=d;
+  let u=null; try{ u=JSON.parse(store('user')||'null'); }catch(e){}
+  if(u && u.name){ S.user=u; home(); } else gate();
+}).catch(()=>{
+  $('#app').innerHTML='<div class="card">자료를 불러오지 못했습니다. 새로고침해 주세요.</div>';
+});
+</script>
+</body>
+</html>

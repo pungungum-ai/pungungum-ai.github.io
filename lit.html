@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>문학 작품 분석노트 · 이재식국어학원</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1b1b1b; --mid:#4a4a4a; --soft:#8c8c8c; --faint:#b4b4b4;
+  --line:#e4e2dd; --bg:#faf9f7; --card:#fff;
+  --g:#2b6b4f; --g-l:#eaf3ee; --o:#b35c17; --o-l:#fdf2e8;
+  --red:#c0392b; --red-l:#fdeeec; --blue:#2f5d8a; --blue-l:#eef3f9;
+  --fs:16px;
+}
+*{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
+html,body{margin:0;padding:0}
+body{
+  font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
+  background:var(--bg);color:var(--ink);font-size:var(--fs);line-height:1.72;
+  word-break:keep-all;overflow-wrap:anywhere;
+}
+.wrap{max-width:820px;margin:0 auto;padding:0 16px 80px}
+
+header{background:var(--card);border-bottom:1px solid var(--line);position:sticky;top:0;z-index:30}
+.hd{max-width:820px;margin:0 auto;padding:11px 16px;display:flex;align-items:center;gap:10px}
+.hd .bk{border:0;background:none;font-size:21px;color:var(--mid);cursor:pointer;padding:3px 6px;margin-left:-6px;display:none}
+.hd .tt{font-weight:700;font-size:15px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+.hd .hm{flex-shrink:0;text-decoration:none;font-size:12px;font-weight:700;color:var(--mid);
+  border:1px solid var(--line);border-radius:999px;padding:4px 11px;line-height:1.5}
+.hd .hm:hover{background:var(--bg)}
+.hd .fs{display:none;gap:4px}
+.hd .fs button{border:1px solid var(--line);background:var(--card);color:var(--mid);
+  font:inherit;font-size:12px;font-weight:700;width:30px;height:28px;border-radius:7px;cursor:pointer}
+
+/* 목록 */
+.srch{width:100%;font:inherit;font-size:16px;padding:11px 14px;border:1px solid var(--line);
+  border-radius:10px;background:var(--card);margin:16px 0 4px}
+.srch:focus{outline:2px solid var(--g);outline-offset:-2px}
+.wlist{display:grid;gap:10px;margin-top:10px}
+.witem{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:15px 17px;cursor:pointer;display:flex;align-items:center;gap:13px}
+.witem:active{background:#fcfcfb}
+.wcat{font-size:11px;font-weight:700;color:var(--g);background:var(--g-l);
+  padding:3px 9px;border-radius:999px;flex:none}
+.witem b{font-family:'Noto Serif KR',serif;font-size:17px;font-weight:700;display:block}
+.witem span{font-size:13px;color:var(--soft)}
+
+/* 작품 머리 */
+.whead{background:var(--card);border:1px solid var(--line);border-radius:14px;
+  padding:22px 20px;margin:16px 0 4px;text-align:center}
+.whead .cat{font-size:11.5px;color:var(--g);font-weight:700;letter-spacing:.06em}
+.whead h1{font-family:'Noto Serif KR',serif;font-size:27px;margin:7px 0 4px;font-weight:700}
+.whead .au{font-size:14.5px;color:var(--mid)}
+.whead .no{font-size:12px;color:var(--faint);margin-top:7px}
+
+/* 접이식 묶음 */
+.sec{background:var(--card);border:1px solid var(--line);border-radius:12px;margin:11px 0;overflow:hidden}
+.sec>summary{list-style:none;cursor:pointer;padding:15px 17px;display:flex;align-items:center;gap:11px;
+  font-weight:700;font-size:15.5px}
+.sec>summary::-webkit-details-marker{display:none}
+.sec>summary .nu{width:24px;height:24px;flex:none;border-radius:7px;background:var(--g);color:#fff;
+  font-size:12.5px;display:grid;place-items:center}
+.sec>summary .ar{margin-left:auto;color:var(--faint);font-size:13px;transition:transform .15s}
+.sec[open]>summary .ar{transform:rotate(180deg)}
+.sec[open]>summary{border-bottom:1px solid var(--line)}
+.body{padding:5px 17px 17px}
+
+/* 이름표 + 내용 (표 대신) */
+.kv{border-bottom:1px solid #f0efec;padding:11px 0}
+.kv:last-child{border-bottom:0}
+.kv .k{font-size:12px;font-weight:700;color:var(--g);letter-spacing:.02em;margin-bottom:3px}
+.kv .v{font-size:15px}
+.note{background:#f7f6f3;border-radius:10px;padding:13px 15px;margin-top:13px;font-size:14.5px;color:var(--mid)}
+.note b{color:var(--ink)}
+ol.feat{margin:10px 0 0;padding-left:0;list-style:none;counter-reset:f}
+ol.feat li{counter-increment:f;position:relative;padding-left:26px;margin:7px 0;font-size:14.8px}
+ol.feat li::before{content:counter(f);position:absolute;left:0;top:3px;width:18px;height:18px;
+  border-radius:50%;background:var(--g-l);color:var(--g);font-size:11px;font-weight:700;
+  display:grid;place-items:center}
+
+/* 시상 전개 카드 */
+.step{border-left:3px solid var(--g);background:#fbfbfa;border-radius:0 10px 10px 0;
+  padding:12px 15px;margin:10px 0}
+.step .t{display:flex;align-items:baseline;gap:8px;margin-bottom:5px}
+.step .t b{font-size:15px}
+.step .t em{font-style:normal;font-size:12px;color:#fff;background:var(--g);padding:1px 8px;border-radius:999px}
+.step .b{font-size:14.6px}
+.step .m{font-size:13.5px;color:var(--o);margin-top:6px;padding-top:6px;border-top:1px dashed #e0ded8}
+
+/* 원문 */
+.blk{margin:16px 0 20px}
+.blk .bh{font-size:13px;font-weight:700;color:var(--blue);background:var(--blue-l);
+  display:inline-block;padding:3px 10px;border-radius:999px;margin-bottom:9px}
+.poem{background:#fbfaf7;border:1px solid #efece5;border-radius:11px;padding:14px 16px}
+.poem .ln{font-family:'Noto Serif KR',serif;font-size:16.5px;line-height:1.75;margin-top:11px}
+.poem .ln:first-child{margin-top:0}
+.poem .nn{font-size:12.3px;color:var(--o);margin-top:2px;padding-left:12px;border-left:2px solid #e8d9c6}
+.gl{margin-top:11px}
+.gl .g{display:flex;gap:8px;margin:9px 0;font-size:14.6px}
+.gl .g b{flex:none;color:var(--g);font-weight:700}
+.gl .g b::before{content:'‘'}
+.gl .g b::after{content:'’'}
+
+/* 번호 목록 */
+ol.num{margin:0;padding-left:0;list-style:none;counter-reset:n}
+ol.num li{counter-increment:n;position:relative;padding-left:27px;margin:11px 0;font-size:14.6px}
+ol.num li::before{content:counter(n);position:absolute;left:0;top:2px;width:19px;height:19px;
+  border-radius:50%;background:var(--o-l);color:var(--o);font-size:11px;font-weight:700;
+  display:grid;place-items:center}
+
+/* 표현상 특징 카드 */
+.dev{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin:9px 0;background:#fff}
+.dev .n{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14.8px}
+.dev .n i{font-style:normal;background:var(--o);color:#fff;font-size:11px;min-width:20px;
+  text-align:center;padding:1px 5px;border-radius:6px}
+.dev .e{font-family:'Noto Serif KR',serif;font-size:14.5px;background:#fbfaf7;
+  border-radius:7px;padding:7px 11px;margin:8px 0 7px}
+.dev .f{font-size:14px;color:var(--mid)}
+
+/* 함정 */
+.trap{background:var(--red-l);border:1px solid #f2d6d2;border-radius:11px;padding:14px 16px;margin-top:6px}
+.trap .th{font-weight:700;font-size:14.5px;color:var(--red);margin-bottom:9px}
+.trap .ti{font-size:14.2px;margin:8px 0;display:flex;gap:7px}
+.trap .ti b{flex:none}
+.trap .ti b::after{content:' :'}
+
+/* 대립 */
+.cont{background:var(--blue-l);border-radius:11px;padding:14px 16px;margin-top:13px}
+.cont .ch{font-weight:700;font-size:14.3px;color:var(--blue);margin-bottom:8px}
+.cont .ci{font-size:14.2px;margin:7px 0}
+.cont .ci b{display:block;font-family:'Noto Serif KR',serif}
+.cont .ci span{color:var(--mid);font-size:13.6px}
+
+/* 핵심 정리 */
+.fin{background:var(--g);color:#fff;border-radius:12px;padding:17px 18px;margin-top:6px}
+.fin h3{margin:0 0 11px;font-size:15.5px;color:#fff}
+.fin .fi{margin:10px 0;font-size:14.4px}
+.fin .fi b{display:block;font-size:12.3px;opacity:.82;margin-bottom:2px;letter-spacing:.03em}
+
+/* OX */
+.oxq{border:1px solid var(--line);border-radius:11px;padding:14px 15px;margin:11px 0;background:#fff}
+.oxq .qq{display:flex;gap:9px;font-size:15px;margin-bottom:11px}
+.oxq .qq i{font-style:normal;flex:none;background:var(--g);color:#fff;font-size:12px;
+  min-width:22px;text-align:center;padding:1px 6px;border-radius:6px;height:21px}
+.oxb{display:flex;gap:9px}
+.oxb button{flex:1;border:1px solid var(--line);background:#fff;font:inherit;font-size:17px;
+  font-weight:700;padding:9px;border-radius:9px;cursor:pointer;color:var(--mid)}
+.oxb button.sel{border-width:2px}
+.oxb button.ok{border-color:var(--g);background:var(--g-l);color:var(--g)}
+.oxb button.no{border-color:var(--red);background:var(--red-l);color:var(--red)}
+.oxs{margin-top:11px;padding-top:11px;border-top:1px dashed var(--line);font-size:14.2px;color:var(--mid)}
+.oxs b{color:var(--ink)}
+.score{background:var(--card);border:1px solid var(--line);border-radius:12px;
+  padding:17px;text-align:center;margin-top:13px}
+.score b{font-size:25px;color:var(--g)}
+.score span{display:block;font-size:13.5px;color:var(--soft);margin-top:3px}
+.rst{border:1px solid var(--line);background:#fff;font:inherit;font-size:14px;color:var(--mid);
+  padding:8px 16px;border-radius:9px;cursor:pointer;margin-top:11px}
+.foot{text-align:center;color:var(--faint);font-size:12px;margin-top:24px}
+@media(max-width:480px){ :root{--fs:15.5px} .wrap{padding:0 12px 80px} .body{padding:5px 14px 15px} }
+</style>
+</head>
+<body>
+<header><div class="hd">
+  <button class="bk" id="bk" aria-label="뒤로">←</button>
+  <div class="tt" id="tt">작품 분석 노트</div>
+  <div class="fs" id="fs"><button id="fsm">가−</button><button id="fsp">가+</button></div>
+  <a class="hm" href="index.html">홈</a>
+</div></header>
+<div id="app" class="wrap"></div>
+<script src="lit-data.js"></script>
+<script>
+const $=(s,r)=>(r||document).querySelector(s);
+const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;};
+let FS=16;
+try{ FS=parseFloat(localStorage.getItem('fs'))||16; }catch(e){}
+document.documentElement.style.setProperty('--fs',FS+'px');
+function setFS(d){ FS=Math.min(21,Math.max(14,FS+d));
+  document.documentElement.style.setProperty('--fs',FS+'px');
+  try{ localStorage.setItem('fs',FS); }catch(e){} }
+$('#fsm').onclick=()=>setFS(-1); $('#fsp').onclick=()=>setFS(1);
+
+function kv(k,v){ const d=el('div','kv'); d.appendChild(el('div','k',k));
+  d.appendChild(el('div','v',v)); return d; }
+function sec(n,title,build,open){
+  const d=document.createElement('details'); d.className='sec'; if(open) d.open=true;
+  const s=document.createElement('summary');
+  s.appendChild(el('span','nu',String(n)));
+  s.appendChild(el('span',null,title));
+  s.appendChild(el('span','ar','▾'));
+  d.appendChild(s);
+  const b=el('div','body'); build(b); d.appendChild(b);
+  return d;
+}
+
+/* ── 목록 ── */
+function home(){
+  location.hash=''; $('#bk').style.display='none'; $('#fs').style.display='none';
+  $('#tt').textContent='작품 분석 노트';
+  const a=$('#app'); a.innerHTML='';
+  const q=el('input','srch'); q.type='search'; q.placeholder='작품명이나 작가로 찾기';
+  a.appendChild(q);
+  const list=el('div','wlist'); a.appendChild(list);
+  function draw(f){
+    list.innerHTML='';
+    const ws=LIT.works.filter(w=>!f ||
+      (w.title+w.author+w.cat).toLowerCase().includes(f.toLowerCase()));
+    if(!ws.length){ list.appendChild(el('div','foot','찾는 작품이 없습니다.')); return; }
+    ws.forEach(w=>{
+      const it=el('div','witem');
+      it.appendChild(el('span','wcat',w.cat));
+      const b=el('div'); b.appendChild(el('b',null,w.title));
+      b.appendChild(el('span',null,w.author));
+      it.appendChild(b);
+      it.onclick=()=>open(w.id);
+      list.appendChild(it);
+    });
+  }
+  q.addEventListener('input',()=>draw(q.value.trim()));
+  draw('');
+  a.appendChild(el('div','foot','작품을 고르면 분석 노트가 열립니다.'));
+  window.scrollTo(0,0);
+}
+
+/* ── 작품 ── */
+function open(id){
+  const w=LIT.works.find(x=>x.id===id); if(!w) return home();
+  location.hash=id;
+  $('#bk').style.display='block'; $('#fs').style.display='flex';
+  $('#tt').textContent=w.title+' · '+w.author;
+  const a=$('#app'); a.innerHTML='';
+
+  const h=el('div','whead');
+  h.appendChild(el('div','cat',w.cat));
+  h.appendChild(el('h1',null,w.title));
+  h.appendChild(el('div','au',w.author));
+  if(w.note) h.appendChild(el('div','no','출전 '+w.note));
+  a.appendChild(h);
+
+  // 1 작품 개관
+  a.appendChild(sec(1,'작품 개관',b=>{
+    w.overview.forEach(([k,v])=>b.appendChild(kv(k,v)));
+    const r=el('div','kv'); r.appendChild(el('div','k','운율'));
+    w.rhythm.forEach(([k,v])=>{ const p=el('div','v'); p.innerHTML='<b>'+k+'</b> '+v;
+      p.style.marginTop='4px'; r.appendChild(p); });
+    b.appendChild(r);
+    const f=el('div','kv'); f.appendChild(el('div','k','특징'));
+    const ol=el('ol','feat'); w.features.forEach(t=>ol.appendChild(el('li',null,t)));
+    f.appendChild(ol); b.appendChild(f);
+    const n=el('div','note'); n.innerHTML='<b>시상 전개 방식</b><br>'+w.flowNote; b.appendChild(n);
+  },true));
+
+  // 2 시상 전개
+  a.appendChild(sec(2,'시상 전개 정리',b=>{
+    w.flow.forEach(s=>{
+      const d=el('div','step');
+      const t=el('div','t'); t.appendChild(el('b',null,s.step));
+      t.appendChild(el('em',null,s.line)); d.appendChild(t);
+      d.appendChild(el('div','b',s.body));
+      d.appendChild(el('div','m','화자의 정서·태도  '+s.mood));
+      b.appendChild(d);
+    });
+  }));
+
+  // 3 원문과 구절 풀이
+  a.appendChild(sec(3,'원문과 구절 풀이',b=>{
+    w.text.forEach(t=>{
+      const d=el('div','blk');
+      d.appendChild(el('span','bh',t.head+' · '+t.sub));
+      const p=el('div','poem');
+      t.orig.forEach(o=>{ p.appendChild(el('div','ln',o.t));
+        if(o.n) p.appendChild(el('div','nn',o.n)); });
+      d.appendChild(p);
+      const g=el('div','gl');
+      t.notes.forEach(([k,v])=>{ const r=el('div','g');
+        r.appendChild(el('b',null,k)); r.appendChild(el('span',null,v)); g.appendChild(r); });
+      d.appendChild(g);
+      b.appendChild(d);
+    });
+    const n=el('div','note');
+    n.appendChild(el('b',null,'출제 가능 구절 별도 풀이'));
+    const ol=el('ol','num'); w.keyLines.forEach(t=>ol.appendChild(el('li',null,t)));
+    n.appendChild(ol); b.appendChild(n);
+  }));
+
+  // 4 표현상 특징
+  a.appendChild(sec(4,'표현상 특징',b=>{
+    w.devices.forEach((d,i)=>{
+      const c=el('div','dev');
+      const n=el('div','n'); n.appendChild(el('i',null,String(i+1)));
+      n.appendChild(el('span',null,d.name)); c.appendChild(n);
+      c.appendChild(el('div','e',d.ex));
+      c.appendChild(el('div','f',d.eff));
+      b.appendChild(c);
+    });
+    const t=el('div','trap');
+    t.appendChild(el('div','th','⚠ 자주 나오는 함정 — 이 작품에 쓰이지 않은 표현'));
+    w.traps.forEach(([k,v])=>{ const r=el('div','ti');
+      r.appendChild(el('b',null,k)); r.appendChild(el('span',null,v)); t.appendChild(r); });
+    b.appendChild(t);
+    const c=el('div','cont'); c.appendChild(el('div','ch','구조적 대응'));
+    w.contrast.forEach(([k,v])=>{ const r=el('div','ci');
+      r.appendChild(el('b',null,k)); r.appendChild(el('span',null,v)); c.appendChild(r); });
+    b.appendChild(c);
+  }));
+
+  // 5 핵심 시어
+  a.appendChild(sec(5,'핵심 시어·소재의 상징적 의미',b=>{
+    w.symbols.forEach(([k,v])=>b.appendChild(kv(k,v)));
+  }));
+
+  // 6 시험 직전 핵심 정리
+  a.appendChild(sec(6,'시험 직전 핵심 정리',b=>{
+    const f=el('div','fin');
+    w.summary.forEach(([k,v])=>{ const r=el('div','fi');
+      r.appendChild(el('b',null,k)); r.appendChild(el('span',null,v)); f.appendChild(r); });
+    b.appendChild(f);
+  }));
+
+  // 7 OX
+  a.appendChild(sec(7,'OX 확인 문제 10문항',b=>oxBuild(b,w)));
+
+  a.appendChild(el('div','foot','글자가 작으면 오른쪽 위 가+ 를 누르세요.'));
+  window.scrollTo(0,0);
+}
+
+function oxBuild(b,w){
+  b.innerHTML='';
+  if(w.oxNote){ const n=el('div','note',w.oxNote); n.style.marginTop='8px'; b.appendChild(n); }
+  const state=[];
+  const sc=el('div','score'); sc.style.display='none';
+  w.ox.forEach((o,i)=>{
+    const c=el('div','oxq');
+    const q=el('div','qq'); q.appendChild(el('i',null,String(i+1)));
+    q.appendChild(el('span',null,o.q)); c.appendChild(q);
+    const bar=el('div','oxb');
+    const sol=el('div','oxs'); sol.style.display='none';
+    [['O',true],['X',false]].forEach(([lb,val])=>{
+      const bt=el('button',null,lb);
+      bt.onclick=()=>{
+        if(state[i]!==undefined) return;
+        state[i]= (val===o.a);
+        [...bar.children].forEach(x=>x.disabled=true);
+        bt.classList.add(val===o.a?'ok':'no','sel');
+        if(val!==o.a) [...bar.children].find(x=>x.textContent===(o.a?'O':'X')).classList.add('ok');
+        sol.innerHTML='<b>'+(val===o.a?'맞았습니다':'틀렸습니다 — 정답 '+(o.a?'O':'X'))+'</b><br>'+o.sol;
+        sol.style.display='block';
+        const done=state.filter(x=>x!==undefined).length;
+        if(done===w.ox.length){
+          const ok=state.filter(x=>x).length;
+          sc.innerHTML=''; sc.appendChild(el('b',null,ok+' / '+w.ox.length));
+          sc.appendChild(el('span',null,'틀린 문항의 해설을 다시 읽어 보세요.'));
+          const r=el('button','rst','다시 풀기'); r.onclick=()=>oxBuild(b,w);
+          sc.appendChild(r); sc.style.display='block';
+          sc.scrollIntoView({behavior:'smooth',block:'nearest'});
+        }
+      };
+      bar.appendChild(bt);
+    });
+    c.appendChild(bar); c.appendChild(sol); b.appendChild(c);
+  });
+  b.appendChild(sc);
+}
+
+$('#bk').onclick=home;
+window.addEventListener('hashchange',()=>{
+  const h=location.hash.slice(1);
+  if(h && LIT.works.some(w=>w.id===h)) open(h); else home();
+});
+const h0=location.hash.slice(1);
+if(h0 && LIT.works.some(w=>w.id===h0)) open(h0); else home();
+</script>
+</body>
+</html>

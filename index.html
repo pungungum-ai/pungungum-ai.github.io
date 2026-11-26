@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>이재식국어학원</title>
+<meta name="description" content="이재식국어학원 학습 자료 — 문학 작품 분석노트, 한글 맞춤법 학습지, 수업 자료실">
+<meta name="theme-color" content="#2C3639">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232C3639'/%3E%3Ctext x='50' y='50' font-size='46' font-family='sans-serif' font-weight='bold' fill='%23F8A39D' text-anchor='middle' dominant-baseline='central'%3E국어%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232C3639'/%3E%3Ctext x='50' y='50' font-size='32' font-family='sans-serif' font-weight='bold' fill='%23F8A39D' text-anchor='middle' dominant-baseline='central'%3E엄T국어%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#2C3639; --ink-soft:#5A6568; --line:#E3E1DC;
+  --paper:#F7F5F1; --card:#FFFFFF; --accent:#F8A39D; --deep:#1F6B4E;
+}
+*{box-sizing:border-box}
+html{-webkit-text-size-adjust:100%}
+body{
+  margin:0; background:var(--paper); color:var(--ink);
+  font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
+  line-height:1.65; -webkit-font-smoothing:antialiased;
+}
+a{color:inherit; text-decoration:none}
+
+/* ── 머리말 ── */
+.hero{
+  background:var(--ink); color:#fff;
+  padding:calc(44px + env(safe-area-inset-top)) 20px 40px;
+  text-align:center; position:relative; overflow:hidden;
+}
+.hero::after{
+  content:""; position:absolute; left:0; right:0; bottom:0; height:4px;
+  background:linear-gradient(90deg,var(--accent) 0%,var(--accent) 38%,transparent 38%);
+}
+.hero .mark{
+  display:inline-block; font-size:.72rem; letter-spacing:.22em;
+  color:var(--accent); font-weight:700; margin-bottom:14px;
+}
+.hero h1{
+  font-family:'Noto Serif KR',serif; font-weight:700;
+  font-size:clamp(1.65rem,6.4vw,2.3rem); margin:0; letter-spacing:-.02em;
+}
+.hero p{
+  margin:14px auto 0; max-width:30em; font-size:.95rem;
+  color:#C9CFD1; line-height:1.75;
+}
+
+/* ── 본문 ── */
+main{max-width:720px; margin:0 auto; padding:30px 16px 48px}
+.lede{
+  font-size:.82rem; letter-spacing:.14em; color:var(--ink-soft);
+  font-weight:700; margin:0 4px 14px;
+}
+
+.card{
+  display:block; background:var(--card); border:1px solid var(--line);
+  border-radius:16px; padding:20px 20px 20px 18px; margin-bottom:14px;
+  position:relative; transition:transform .13s ease, box-shadow .13s ease;
+  border-left:5px solid var(--accent);
+}
+.card:nth-of-type(2){border-left-color:var(--deep)}
+.card:nth-of-type(3){border-left-color:#8B7BA8}
+.card:hover,.card:focus-visible{transform:translateY(-2px); box-shadow:0 7px 20px rgba(44,54,57,.11)}
+.card:focus-visible{outline:3px solid var(--accent); outline-offset:3px}
+.card h2{
+  font-family:'Noto Serif KR',serif; font-size:1.18rem; font-weight:700;
+  margin:0 0 7px; display:flex; align-items:center; gap:9px;
+}
+.card h2 .ico{font-size:1.1rem}
+.card p{margin:0; font-size:.9rem; color:var(--ink-soft); line-height:1.7}
+.card .go{
+  display:inline-block; margin-top:12px; font-size:.82rem;
+  font-weight:700; color:var(--ink);
+}
+.card .go::after{content:" →"; color:var(--accent)}
+.tag{
+  display:inline-block; font-size:.68rem; font-weight:700; letter-spacing:.06em;
+  background:#F0EEE9; color:var(--ink-soft); border-radius:999px;
+  padding:2px 9px; margin-left:auto;
+}
+
+.note{
+  margin:26px 2px 0; padding:15px 17px; background:#FFFDF6;
+  border:1px solid #EDE4CB; border-radius:12px;
+  font-size:.84rem; color:#6B5F43; line-height:1.75;
+}
+footer{
+  text-align:center; padding:26px 16px calc(30px + env(safe-area-inset-bottom));
+  font-size:.76rem; color:#9AA2A4; border-top:1px solid var(--line); margin-top:10px;
+}
+@media (prefers-reduced-motion:reduce){*{transition:none !important}}
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <span class="mark">국어 공부방</span>
+  <h1>이재식국어학원</h1>
+  <p>수업에서 다룬 작품과 문법을 휴대폰으로 다시 확인하세요.<br>분석노트는 로그인 없이 바로 볼 수 있습니다.</p>
+</header>
+
+<main>
+  <p class="lede">학습 자료</p>
+
+  <a class="card" href="lit.html">
+    <h2><span class="ico">📖</span>문학 작품 분석노트<span class="tag">로그인 없음</span></h2>
+    <p>수업에서 정리한 작품을 그대로 담았습니다. 작품 개관부터 시상 전개, 원문 구절 풀이, 표현상 특징, 함정 정리, 시험 직전 요약, OX 확인 문제까지 한 편씩 볼 수 있습니다.</p>
+    <span class="go">작품 보러 가기</span>
+  </a>
+
+  <a class="card" href="spell.html">
+    <h2><span class="ico">✏️</span>한글 맞춤법 학습지<span class="tag">기록 남음</span></h2>
+    <p>한글 맞춤법 전 항목을 개념·연습·갈래·채우기·기출 다섯 가지 방식으로 공부합니다. 다 풀고 이름과 출결번호를 넣으면 결과가 선생님께 전달됩니다.</p>
+    <span class="go">문제 풀러 가기</span>
+  </a>
+
+  <a class="card" id="portal" href="#">
+    <h2><span class="ico">📁</span>자료실 · 수업 영상<span class="tag">로그인 필요</span></h2>
+    <p>숙제 확인, 수업 자료 내려받기, 수업 영상 다시 보기, 클리닉 일정 변경. 이름과 출결번호로 접속합니다.</p>
+    <span class="go">학생 접속하기</span>
+  </a>
+
+  <p class="note">
+    <strong>처음 오셨나요?</strong><br>
+    분석노트와 맞춤법 학습지는 바로 열립니다. 자료실과 수업 영상은 학원에서 받은 <strong>이름과 출결번호 4자리</strong>가 필요합니다. 출결번호를 모르면 선생님께 문의하세요.
+  </p>
+</main>
+
+<footer>
+  이재식국어학원 · 수업 자료 열람용 페이지
+</footer>
+
+<script>
+// 학생 전용 포털(구글 앱스 스크립트) 주소. 재배포로 주소가 바뀌면 이 줄만 고치면 된다.
+var PORTAL_URL = "https://script.google.com/macros/s/AKfycbx_9FAV1gPLUuwPcmP1rYd4_ASLrK-MzhVKinunxqEWGnYJxsvILI3pH4ycAbUOEd7Jkw/exec";
+var el = document.getElementById('portal');
+el.href = PORTAL_URL;
+el.target = "_blank";
+el.rel = "noopener";
+</script>
+
+</body>
+</html>
