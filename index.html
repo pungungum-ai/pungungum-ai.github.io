@@ -5,105 +5,111 @@
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>이재식국어학원</title>
 <meta name="description" content="이재식국어학원 학습 자료 — 문학 작품 분석노트, 한글 맞춤법 학습지, 수업 자료실">
-<meta name="theme-color" content="#2C3639">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232C3639'/%3E%3Ctext x='50' y='50' font-size='46' font-family='sans-serif' font-weight='bold' fill='%23F8A39D' text-anchor='middle' dominant-baseline='central'%3E국어%3C/text%3E%3C/svg%3E">
-<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' rx='22' fill='%232C3639'/%3E%3Ctext x='50' y='50' font-size='46' font-family='sans-serif' font-weight='bold' fill='%23F8A39D' text-anchor='middle' dominant-baseline='central'%3E국어%3C/text%3E%3C/svg%3E">
+<meta name="theme-color" content="#FBFAF7">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FBFAF7'/%3E%3Crect x='8' y='8' width='84' height='84' fill='none' stroke='%23C8443C' stroke-width='5'/%3E%3Ctext x='50' y='54' font-size='52' font-family='serif' font-weight='700' fill='%231B1F23' text-anchor='middle' dominant-baseline='central'%3E국%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FBFAF7'/%3E%3Crect x='8' y='8' width='84' height='84' fill='none' stroke='%23C8443C' stroke-width='5'/%3E%3Ctext x='50' y='54' font-size='52' font-family='serif' font-weight='700' fill='%231B1F23' text-anchor='middle' dominant-baseline='central'%3E국%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@400;500;700&family=Noto+Serif+KR:wght@500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#2C3639; --mid:#5A6568; --soft:#9AA2A4; --line:#E3E1DC;
-  --paper:#F7F5F1; --card:#FFFFFF; --accent:#F8A39D; --deep:#1F6B4E; --red:#C0392B;
+  --paper:#FBFAF7;      /* 종이 */
+  --ink:#1B1F23;        /* 먹 */
+  --ink-2:#6E7378;      /* 흐린 먹 */
+  --rule:#E4E0D6;       /* 원고지 괘선 */
+  --pen:#C8443C;        /* 첨삭 빨강 */
+  --mark:#2F6B4F;       /* 채점 표시 */
+  --serif:'Hahmlet',serif;
+  --sans:'IBM Plex Sans KR',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
 }
 *{box-sizing:border-box}
 html{-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--paper);color:var(--ink);
-  font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,'Malgun Gothic',sans-serif;
-  line-height:1.65;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--sans);
+  font-size:16px;line-height:1.7;-webkit-font-smoothing:antialiased}
 a{color:inherit;text-decoration:none}
-button{font:inherit}
+button{font:inherit;color:inherit}
 
-.hero{background:var(--ink);color:#fff;padding:calc(38px + env(safe-area-inset-top)) 20px 34px;
-  text-align:center;position:relative;overflow:hidden}
-.hero::after{content:"";position:absolute;left:0;right:0;bottom:0;height:4px;
-  background:linear-gradient(90deg,var(--accent) 0%,var(--accent) 38%,transparent 38%)}
-.hero .mark{display:inline-block;font-size:.72rem;letter-spacing:.22em;color:var(--accent);font-weight:700;margin-bottom:12px}
-.hero h1{font-family:'Noto Serif KR',serif;font-weight:700;font-size:clamp(1.55rem,6vw,2.1rem);margin:0;letter-spacing:-.02em}
-.hero p{margin:12px auto 0;max-width:30em;font-size:.93rem;color:#C9CFD1;line-height:1.75}
-.hero .me{margin-top:16px;display:inline-flex;align-items:center;gap:10px;
-  background:rgba(255,255,255,.1);border-radius:999px;padding:6px 8px 6px 15px;font-size:.85rem}
-.hero .me b{font-weight:700}
-.hero .me button{border:0;background:rgba(255,255,255,.16);color:#fff;border-radius:999px;
-  padding:4px 11px;font-size:.76rem;cursor:pointer}
+.sheet{max-width:600px;margin:0 auto;padding:0 20px calc(40px + env(safe-area-inset-bottom))}
 
-main{max-width:720px;margin:0 auto;padding:28px 16px 48px}
-.lede{font-size:.8rem;letter-spacing:.14em;color:var(--mid);font-weight:700;margin:0 4px 13px}
-.lede.sp{margin-top:30px}
+/* ── 원고지 머리 ── */
+.head{padding:calc(30px + env(safe-area-inset-top)) 0 0}
+.grid{display:grid;grid-template-columns:repeat(7,1fr);border:1.5px solid var(--ink);
+  border-right:0;background:var(--paper)}
+.grid span{aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+  border-right:1.5px solid var(--ink);font-family:var(--serif);font-weight:700;
+  font-size:clamp(1.3rem,6.4vw,2rem);line-height:1;color:var(--ink)}
+.grid.ani span{opacity:0;animation:ink .34s ease-out forwards}
+@keyframes ink{from{opacity:0;transform:translateY(5px)}to{opacity:1;transform:none}}
 
-.card{display:block;width:100%;text-align:left;background:var(--card);border:1px solid var(--line);
-  border-radius:16px;padding:19px 19px 19px 17px;margin-bottom:13px;cursor:pointer;
-  transition:transform .13s ease,box-shadow .13s ease;border-left:5px solid var(--accent)}
-.card.g{border-left-color:var(--deep)}
-.card.p{border-left-color:#8B7BA8}
-.card.b{border-left-color:#4A7BA8}
-.card.o{border-left-color:#C98A3C}
-.card:hover,.card:focus-visible{transform:translateY(-2px);box-shadow:0 7px 20px rgba(44,54,57,.11)}
-.card h2{font-family:'Noto Serif KR',serif;font-size:1.14rem;font-weight:700;margin:0 0 6px;
-  display:flex;align-items:center;gap:9px}
-.card p{margin:0;font-size:.89rem;color:var(--mid);line-height:1.7}
-.card .go{display:inline-block;margin-top:11px;font-size:.81rem;font-weight:700;color:var(--ink)}
-.card .go::after{content:" →";color:var(--accent)}
-.tag{display:inline-block;font-size:.67rem;font-weight:700;letter-spacing:.06em;background:#F0EEE9;
-  color:var(--mid);border-radius:999px;padding:2px 9px;margin-left:auto;white-space:nowrap}
-.tag.hot{background:#FDEBE9;color:#B4524B}
+.byline{display:flex;align-items:baseline;gap:12px;justify-content:flex-end;
+  border-bottom:1px solid var(--rule);padding:11px 2px 12px;font-size:.85rem;color:var(--ink-2)}
+.byline b{font-weight:600;color:var(--ink)}
+.byline button{border:0;background:none;padding:0;font-size:.8rem;color:var(--ink-2);
+  cursor:pointer;text-decoration:underline;text-underline-offset:3px}
+.byline button:hover{color:var(--pen)}
+.tagline{padding:13px 2px 0;font-size:.88rem;color:var(--ink-2);line-height:1.75}
 
-/* 로그인 */
-.gate{max-width:430px;margin:40px auto;padding:0 16px}
-.gbox{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:28px 24px 24px}
-.gbox h2{font-family:'Noto Serif KR',serif;margin:0 0 6px;font-size:1.25rem}
-.gbox .sub{margin:0 0 22px;font-size:.88rem;color:var(--mid)}
-label{display:block;font-size:.8rem;font-weight:700;color:var(--mid);margin:0 0 6px}
-input.f{width:100%;border:1px solid var(--line);border-radius:11px;padding:13px 14px;
-  font:inherit;font-size:1rem;margin-bottom:16px;background:#fff;color:var(--ink)}
-input.f:focus{outline:2px solid var(--deep);outline-offset:1px;border-color:transparent}
-.btn{width:100%;border:0;border-radius:11px;background:var(--deep);color:#fff;font-weight:700;
-  font-size:1rem;padding:14px;cursor:pointer}
-.btn:disabled{opacity:.5;cursor:default}
-.btn.sm{width:auto;padding:9px 16px;font-size:.84rem;border-radius:999px}
-.btn.gh{background:#EDEAE4;color:var(--ink)}
-.err{background:#FDEEF0;border:1px solid #F3C9CE;color:var(--red);border-radius:10px;
-  padding:11px 13px;font-size:.86rem;margin-bottom:16px}
-.hint{margin:16px 2px 0;font-size:.8rem;color:var(--soft);line-height:1.7;text-align:center}
+/* ── 목차 ── */
+.toc{margin-top:34px}
+.toc h2{font-family:var(--serif);font-weight:600;font-size:1rem;margin:0 0 2px;
+  padding-bottom:9px;border-bottom:1.5px solid var(--ink)}
+.item{display:grid;grid-template-columns:auto 1fr auto;column-gap:10px;align-items:baseline;
+  width:100%;text-align:left;background:none;border:0;border-bottom:1px solid var(--rule);
+  padding:15px 2px 16px;cursor:pointer;font:inherit}
+.item:last-child{border-bottom:1.5px solid var(--ink)}
+.item .t{font-family:var(--serif);font-weight:600;font-size:1.09rem;letter-spacing:-.01em}
+.item .ld{border-bottom:1px dotted #C9C4B6;transform:translateY(-5px)}
+.item .n{font-size:.84rem;color:var(--ink-2);font-variant-numeric:tabular-nums;white-space:nowrap}
+.item .n.due{color:var(--pen);font-weight:600}
+.item .d{grid-column:1/-1;margin-top:3px;font-size:.84rem;color:var(--ink-2);line-height:1.65}
+.item:hover .t,.item:focus-visible .t{color:var(--pen)}
+.item:focus-visible{outline:2px solid var(--pen);outline-offset:3px}
 
-/* 목록 */
-.sec{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:6px 18px 14px;margin-bottom:13px}
-.sec h3{font-size:.78rem;letter-spacing:.1em;color:var(--mid);font-weight:700;margin:16px 0 9px}
-.row{display:flex;align-items:center;gap:11px;padding:11px 0;border-top:1px solid #F0EEE9}
-.row:first-of-type{border-top:0}
-.row .t{flex:1;min-width:0;font-size:.93rem;line-height:1.55;word-break:break-all}
-.row .k{flex-shrink:0;font-size:.74rem;font-weight:700;color:var(--mid);background:#F3F1EC;
-  border-radius:6px;padding:3px 7px}
-.row a.open{flex-shrink:0;font-size:.8rem;font-weight:700;color:var(--deep);border:1px solid var(--line);
-  border-radius:999px;padding:5px 13px;background:#fff}
-.hw{padding:13px 0;border-top:1px solid #F0EEE9}
-.hw:first-of-type{border-top:0}
-.hw .wk{font-size:.75rem;font-weight:700;color:var(--mid);letter-spacing:.04em}
-.hw .ct{margin:4px 0 9px;font-size:.94rem;white-space:pre-wrap;line-height:1.7}
-.chk{border:1px solid var(--line);background:#fff;border-radius:999px;padding:6px 14px;
-  font-size:.8rem;font-weight:700;color:var(--mid);cursor:pointer}
-.chk.on{background:#E9F4EE;border-color:#B6DCC6;color:var(--deep);cursor:default}
-.empty{padding:22px 2px;text-align:center;color:var(--soft);font-size:.88rem}
-.bar{display:flex;align-items:center;gap:10px;margin-bottom:16px}
-.bar h2{font-family:'Noto Serif KR',serif;font-size:1.3rem;margin:0;flex:1}
-.note{margin:24px 2px 0;padding:15px 17px;background:#FFFDF6;border:1px solid #EDE4CB;
-  border-radius:12px;font-size:.83rem;color:#6B5F43;line-height:1.75}
-footer{text-align:center;padding:26px 16px calc(30px + env(safe-area-inset-bottom));
-  font-size:.75rem;color:var(--soft);border-top:1px solid var(--line);margin-top:10px}
-.spin{display:inline-block;width:15px;height:15px;border:2px solid rgba(255,255,255,.4);
-  border-top-color:#fff;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-3px}
+/* ── 로그인 ── */
+.form{margin-top:36px}
+.form h2{font-family:var(--serif);font-weight:600;font-size:1.06rem;margin:0 0 4px}
+.form .lead{margin:0 0 26px;font-size:.88rem;color:var(--ink-2)}
+.field{margin-bottom:22px}
+.field label{display:block;font-size:.8rem;color:var(--ink-2);margin-bottom:3px}
+.field input{width:100%;border:0;border-bottom:1.5px solid var(--ink);background:none;
+  padding:7px 2px;font:inherit;font-size:1.06rem;color:var(--ink);border-radius:0}
+.field input::placeholder{color:#B9B5AA}
+.field input:focus{outline:0;border-bottom-color:var(--pen)}
+.go{width:100%;border:1.5px solid var(--ink);background:var(--ink);color:var(--paper);
+  font-family:var(--serif);font-weight:600;font-size:1.02rem;padding:14px;cursor:pointer;margin-top:6px}
+.go:disabled{opacity:.45;cursor:default}
+.go:focus-visible{outline:2px solid var(--pen);outline-offset:3px}
+.alert{border-left:3px solid var(--pen);background:#FDF3F2;padding:11px 13px;
+  margin-bottom:22px;font-size:.87rem;color:#8E2F29}
+.aside{margin-top:22px;font-size:.82rem;color:var(--ink-2);text-align:center}
+
+/* ── 안쪽 화면 ── */
+.bar{display:flex;align-items:baseline;gap:14px;padding:calc(26px + env(safe-area-inset-top)) 0 10px;
+  border-bottom:1.5px solid var(--ink)}
+.bar h1{font-family:var(--serif);font-weight:700;font-size:1.3rem;margin:0;flex:1}
+.bar button{border:0;background:none;padding:0;font-size:.85rem;color:var(--ink-2);cursor:pointer}
+.bar button:hover{color:var(--pen)}
+.cat{font-family:var(--serif);font-weight:600;font-size:.92rem;color:var(--ink-2);
+  margin:26px 0 0;padding-bottom:7px;border-bottom:1px solid var(--rule)}
+.line{display:flex;align-items:center;gap:14px;padding:14px 2px;border-bottom:1px solid var(--rule)}
+.line .t{flex:1;min-width:0;font-size:.95rem;line-height:1.55;word-break:break-word}
+.line a.act{flex-shrink:0;font-size:.84rem;color:var(--pen);border-bottom:1px solid currentColor;
+  padding-bottom:1px}
+.task{padding:16px 2px;border-bottom:1px solid var(--rule)}
+.task .wk{font-size:.78rem;color:var(--ink-2)}
+.task .body{margin:3px 0 11px;font-size:.96rem;white-space:pre-wrap;line-height:1.75}
+.chk{border:1.5px solid var(--ink);background:none;padding:7px 15px;font-size:.84rem;cursor:pointer}
+.chk.done{border-color:var(--mark);color:var(--mark);cursor:default}
+.chk:disabled{cursor:default}
+.none{padding:40px 2px;text-align:center;color:var(--ink-2);font-size:.9rem;
+  border-bottom:1px solid var(--rule)}
+.foot{margin-top:40px;padding-top:16px;border-top:1px solid var(--rule);
+  font-size:.76rem;color:#A5A199}
+.dot{display:inline-block;width:14px;height:14px;border:2px solid currentColor;
+  border-right-color:transparent;border-radius:50%;animation:sp .7s linear infinite;vertical-align:-2px}
 @keyframes sp{to{transform:rotate(360deg)}}
-@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}}
+@media (prefers-reduced-motion:reduce){*{animation:none !important;transition:none !important}
+  .grid.ani span{opacity:1}}
 </style>
 </head>
 <body>
@@ -116,11 +122,11 @@ var API = "https://script.google.com/macros/s/AKfycbx_9FAV1gPLUuwPcmP1rYd4_ASLrK
 /* ============================================================================= */
 
 var KEY = 'ijs_user';
-var S = { me:null, view:'home' };
+var NAME = '이재식국어학원';
+var S = { me:null };
 
 function $(s,r){ return (r||document).querySelector(s); }
 function el(t,c,x){ var e=document.createElement(t); if(c)e.className=c; if(x!=null)e.textContent=x; return e; }
-function esc(s){ return String(s==null?'':s); }
 function save(){ try{ localStorage.setItem(KEY, JSON.stringify(S.me)); }catch(e){} }
 function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||'null'); }catch(e){ return null; } }
 function wipe(){ try{ localStorage.removeItem(KEY); }catch(e){} }
@@ -130,11 +136,11 @@ function ask(params){
   return new Promise(function(resolve,reject){
     var cb='hp_'+Math.random().toString(36).slice(2,10), done=false;
     var s=document.createElement('script');
-    var timer=setTimeout(function(){ if(!done){ clean(); reject(new Error('시간이 초과되었습니다.')); } },20000);
+    var timer=setTimeout(function(){ if(!done){ clean(); reject(new Error('시간이 초과되었습니다. 다시 시도해 주세요.')); } },20000);
     function clean(){ done=true; clearTimeout(timer); try{ delete window[cb]; }catch(e){ window[cb]=undefined; }
       if(s.parentNode) s.parentNode.removeChild(s); }
     window[cb]=function(d){ clean(); resolve(d); };
-    s.onerror=function(){ if(!done){ clean(); reject(new Error('연결하지 못했습니다.')); } };
+    s.onerror=function(){ if(!done){ clean(); reject(new Error('연결하지 못했습니다. 인터넷을 확인해 주세요.')); } };
     var q=['action=home','callback='+cb];
     for(var k in params){ if(params[k]!=null) q.push(encodeURIComponent(k)+'='+encodeURIComponent(params[k])); }
     s.src=API+'?'+q.join('&');
@@ -142,214 +148,181 @@ function ask(params){
   });
 }
 
-/* ───── 로그인 화면 ───── */
+/* 원고지 제목 칸 */
+function titleGrid(animate){
+  var g=el('div','grid'+(animate?' ani':''));
+  g.setAttribute('aria-label',NAME);
+  NAME.split('').forEach(function(ch,i){
+    var c=el('span',null,ch);
+    c.setAttribute('aria-hidden','true');
+    if(animate) c.style.animationDelay=(i*55)+'ms';
+    g.appendChild(c);
+  });
+  return g;
+}
+function sheet(){ var d=el('div','sheet'); $('#root').appendChild(d); return d; }
+function foot(d){ d.appendChild(el('p','foot','수업에서 쓴 자료를 모아 둔 곳입니다.')); }
+
+/* ───── 로그인 ───── */
 function gate(msg){
-  var r=$('#root'); r.innerHTML='';
-  var h=el('header','hero');
-  h.appendChild(el('span','mark','국어 공부방'));
-  h.appendChild(el('h1',null,'이재식국어학원'));
-  h.appendChild(el('p',null,'이름과 출결번호를 넣고 들어오세요.'));
-  r.appendChild(h);
+  $('#root').innerHTML=''; var d=sheet();
+  var h=el('div','head'); h.appendChild(titleGrid(true));
+  h.appendChild(el('p','tagline','수업에서 다룬 작품과 문법을 휴대폰으로 다시 봅니다.'));
+  d.appendChild(h);
 
-  var g=el('div','gate'), b=el('div','gbox');
-  b.appendChild(el('h2',null,'학생 확인'));
-  b.appendChild(el('p','sub','학원에서 받은 이름과 출결번호 그대로 넣으면 됩니다.'));
-  if(msg) b.appendChild(el('div','err',msg));
+  var f=el('div','form');
+  f.appendChild(el('h2',null,'학생 확인'));
+  f.appendChild(el('p','lead','학원에서 받은 이름과 출결번호를 넣으세요.'));
+  if(msg) f.appendChild(el('div','alert',msg));
 
-  b.appendChild(el('label',null,'이름'));
-  var n=el('input','f'); n.placeholder='이름'; n.autocomplete='off'; b.appendChild(n);
+  function field(label,ph,mode){
+    var w=el('div','field'); w.appendChild(el('label',null,label));
+    var i=el('input'); i.placeholder=ph; i.autocomplete='off';
+    if(mode) i.inputMode=mode;
+    w.appendChild(i); f.appendChild(w); return i;
+  }
+  var n=field('이름','이름');
+  var c=field('출결번호','네 자리','numeric');
 
-  b.appendChild(el('label',null,'출결번호'));
-  var c=el('input','f'); c.placeholder='네 자리'; c.inputMode='numeric'; c.autocomplete='off'; b.appendChild(c);
-
-  var go=el('button','btn','들어가기');
-  b.appendChild(go); g.appendChild(b);
-
-  var hint=el('p','hint');
-  hint.appendChild(document.createTextNode('출결번호를 모르면 선생님께 물어보세요.'));
-  g.appendChild(hint);
-  r.appendChild(g);
+  var go=el('button','go','들어가기'); f.appendChild(go);
+  f.appendChild(el('p','aside','출결번호를 모르면 선생님께 물어보세요.'));
+  d.appendChild(f);
 
   function submit(){
     var name=n.value.trim(), code=c.value.trim();
-    if(!name || !code){ n.focus(); return; }
-    go.disabled=true; go.innerHTML=''; go.appendChild(el('span','spin'));
-    ask({what:'login', name:name, code:code}).then(function(d){
-      if(d && d.success){
-        S.me={ name:d.name, school:d.school, code:code, files:d.files||[], videos:d.videos||[],
-               homeworkList:d.homeworkList||[], doneWeeks:d.doneWeeks||[], allow:d.allow||{lit:null,spell:null} };
+    if(!name || !code){ (name?c:n).focus(); return; }
+    go.disabled=true; go.innerHTML=''; go.appendChild(el('span','dot'));
+    ask({what:'login', name:name, code:code}).then(function(r){
+      if(r && r.success){
+        S.me={ name:r.name, school:r.school, code:code, files:r.files||[], videos:r.videos||[],
+               homeworkList:r.homeworkList||[], doneWeeks:r.doneWeeks||[], allow:r.allow||{lit:null,spell:null} };
         save(); home();
       }else{
-        gate((d && d.message) ? d.message : '확인하지 못했습니다.');
+        gate((r && r.message) ? r.message : '이름 또는 출결번호가 맞지 않습니다.');
       }
     }).catch(function(e){ gate(e.message); });
   }
   go.onclick=submit;
   [n,c].forEach(function(i){ i.addEventListener('keydown',function(e){ if(e.key==='Enter') submit(); }); });
-  setTimeout(function(){ n.focus(); },80);
+  setTimeout(function(){ n.focus(); },420);
 }
 
 /* ───── 첫 화면 ───── */
 function home(){
-  S.view='home';
-  var m=S.me, r=$('#root'); r.innerHTML='';
+  var m=S.me; $('#root').innerHTML=''; var d=sheet();
 
-  var h=el('header','hero');
-  h.appendChild(el('span','mark','국어 공부방'));
-  h.appendChild(el('h1',null,'이재식국어학원'));
-  h.appendChild(el('p',null,'수업에서 다룬 작품과 문법을 휴대폰으로 다시 확인하세요.'));
-  var me=el('div','me');
-  var who=el('b',null,m.school+' '+m.name); me.appendChild(who);
+  var h=el('div','head'); h.appendChild(titleGrid(false));
+  var by=el('div','byline');
+  by.appendChild(el('span',null,m.school));
+  by.appendChild(el('b',null,m.name));
   var out=el('button',null,'나가기');
   out.onclick=function(){ wipe(); S.me=null; gate(); };
-  me.appendChild(out); h.appendChild(me);
-  r.appendChild(h);
+  by.appendChild(out); h.appendChild(by);
+  d.appendChild(h);
 
-  var mn=el('main');
-  mn.appendChild(el('p','lede','학습 자료'));
+  var t1=el('div','toc'); t1.appendChild(el('h2',null,'학습 자료'));
+  var nLit=(m.allow&&m.allow.lit)?m.allow.lit.length:null;
+  t1.appendChild(item('문학 작품 분석노트','작품 개관부터 구절 풀이, 함정 정리, OX 문제까지',
+    nLit!=null?(nLit+'편'):null, {href:'lit.html'}));
+  var nSp=(m.allow&&m.allow.spell)?m.allow.spell.length:null;
+  t1.appendChild(item('한글 맞춤법 학습지','개념·연습·갈래·채우기·기출 다섯 가지로 공부합니다',
+    nSp!=null?(nSp+'단원'):null, {href:'spell.html'}));
+  var due=(m.homeworkList||[]).filter(function(x){ return (m.doneWeeks||[]).indexOf(x.week)<0; }).length;
+  t1.appendChild(item('숙제 · 클리닉','이번 주에 해야 할 것',
+    due?(due+'개 남음'):'다 확인함', {fn:tasks, due:!!due}));
+  d.appendChild(t1);
 
-  mn.appendChild(cardLink('📖','문학 작품 분석노트',
-    '수업에서 정리한 작품을 그대로 담았습니다. 작품 개관, 시상 전개, 구절 풀이, 표현상 특징, 함정 정리, 시험 직전 요약, OX 문제까지 볼 수 있습니다.',
-    '작품 보러 가기','lit.html',''));
+  var t2=el('div','toc'); t2.appendChild(el('h2',null,m.school+' 자료'));
+  t2.appendChild(item('수업 자료실','수업에서 나눠 준 자료',
+    (m.files||[]).length?((m.files||[]).length+'개'):'없음', {fn:function(){ listing('files'); }}));
+  t2.appendChild(item('수업 영상','빠진 수업이나 다시 듣고 싶은 부분',
+    (m.videos||[]).length?((m.videos||[]).length+'개'):'없음', {fn:function(){ listing('videos'); }}));
+  d.appendChild(t2);
 
-  mn.appendChild(cardLink('✏️','한글 맞춤법 학습지',
-    '한글 맞춤법 전 항목을 개념·연습·갈래·채우기·기출 다섯 가지로 공부합니다. 푼 결과는 선생님께 전달됩니다.',
-    '문제 풀러 가기','spell.html','g'));
-
-  var hwNew = (m.homeworkList||[]).filter(function(x){ return (m.doneWeeks||[]).indexOf(x.week)<0; }).length;
-  mn.appendChild(cardBtn('📌','숙제 · 클리닉',
-    '이번 주에 해야 할 것을 확인하고 체크해 두세요.',
-    '숙제 보기', function(){ hw(); }, 'o',
-    hwNew ? ('확인 전 '+hwNew) : null, !!hwNew));
-
-  mn.appendChild(el('p','lede sp', m.school+' 자료'));
-
-  mn.appendChild(cardBtn('📁','수업 자료실',
-    '수업에서 나눠 준 자료를 내려받을 수 있습니다.',
-    '자료 보기', function(){ list('files'); }, 'b',
-    (m.files||[]).length ? ((m.files||[]).length+'개') : '없음', false));
-
-  mn.appendChild(cardBtn('🎬','수업 영상',
-    '빠진 수업이나 다시 듣고 싶은 부분을 찾아보세요.',
-    '영상 보기', function(){ list('videos'); }, 'p',
-    (m.videos||[]).length ? ((m.videos||[]).length+'개') : '없음', false));
-
-  var al=m.allow||{};
-  if(al.lit || al.spell){
-    mn.appendChild(el('p','note','분석노트와 맞춤법 학습지는 '+m.school+'에 맞춰 일부만 열려 있습니다.'));
-  }
-  r.appendChild(mn);
-  r.appendChild(foot());
+  foot(d);
   window.scrollTo(0,0);
 }
 
-function cardLink(ico,title,desc,go,href,cls){
-  var a=el('a','card'+(cls?' '+cls:'')); a.href=href;
-  var h2=el('h2'); h2.appendChild(el('span',null,ico)); h2.appendChild(el('span',null,title));
-  a.appendChild(h2);
-  a.appendChild(el('p',null,desc));
-  a.appendChild(el('span','go',go));
-  return a;
+function item(title,desc,count,opt){
+  var e = opt.href ? el('a','item') : el('button','item');
+  if(opt.href){ e.href=opt.href; } else { e.type='button'; e.onclick=opt.fn; }
+  e.appendChild(el('span','t',title));
+  if(count){
+    e.appendChild(el('span','ld'));
+    e.appendChild(el('span','n'+(opt.due?' due':''),count));
+  }
+  e.appendChild(el('span','d',desc));
+  return e;
 }
-function cardBtn(ico,title,desc,go,fn,cls,tag,hot){
-  var b=el('button','card'+(cls?' '+cls:'')); b.type='button'; b.onclick=fn;
-  var h2=el('h2'); h2.appendChild(el('span',null,ico)); h2.appendChild(el('span',null,title));
-  if(tag){ var t=el('span','tag'+(hot?' hot':''),tag); h2.appendChild(t); }
-  b.appendChild(h2);
-  b.appendChild(el('p',null,desc));
-  b.appendChild(el('span','go',go));
-  return b;
-}
-function foot(){ return el('footer',null,'이재식국어학원 · 수업 자료 열람용 페이지'); }
-
-function topbar(title){
-  var bar=el('div','bar');
-  var back=el('button','btn sm gh','← 홈'); back.onclick=home;
-  bar.appendChild(back); bar.appendChild(el('h2',null,title));
-  return bar;
+function bar(d,title){
+  var b=el('div','bar');
+  b.appendChild(el('h1',null,title));
+  var back=el('button',null,'← 처음으로'); back.onclick=home;
+  b.appendChild(back); d.appendChild(b);
 }
 
 /* ───── 자료실 · 영상 ───── */
-function list(kind){
-  S.view=kind;
-  var m=S.me, r=$('#root'); r.innerHTML='';
-  var mn=el('main');
-  mn.appendChild(topbar(kind==='files' ? '수업 자료실' : '수업 영상'));
+function listing(kind){
+  var m=S.me; $('#root').innerHTML=''; var d=sheet();
+  bar(d, kind==='files' ? '수업 자료실' : '수업 영상');
 
   var items=(kind==='files' ? m.files : m.videos)||[];
   if(!items.length){
-    var e=el('div','sec'); e.appendChild(el('div','empty','아직 올라온 것이 없습니다.'));
-    mn.appendChild(e);
+    d.appendChild(el('div','none','아직 올라온 것이 없습니다.'));
   }else{
     var groups={}, order=[];
-    items.forEach(function(it){
-      var k=it.category||'기타';
-      if(!groups[k]){ groups[k]=[]; order.push(k); }
-      groups[k].push(it);
-    });
-    var box=el('div','sec');
+    items.forEach(function(it){ var k=it.category||'기타';
+      if(!groups[k]){ groups[k]=[]; order.push(k); } groups[k].push(it); });
     order.forEach(function(k){
-      box.appendChild(el('h3',null,k));
+      d.appendChild(el('p','cat',k));
       groups[k].forEach(function(it){
-        var row=el('div','row');
-        var name=(kind==='files' ? it.name : it.title);
-        row.appendChild(el('div','t',name));
-        var a=el('a','open', kind==='files' ? '열기' : '보기');
+        var row=el('div','line');
+        var label=(kind==='files' ? it.name : it.title);
+        row.appendChild(el('div','t',label));
+        var a=el('a','act', kind==='files' ? '열기' : '보기');
         a.href=it.url; a.target='_blank'; a.rel='noopener';
         if(kind==='files'){
           a.addEventListener('click',function(){
-            ask({what:'dl', name:m.name, code:m.code, school:m.school, file:name}).catch(function(){});
+            ask({what:'dl', name:m.name, code:m.code, school:m.school, file:label}).catch(function(){});
           });
         }
-        row.appendChild(a);
-        box.appendChild(row);
+        row.appendChild(a); d.appendChild(row);
       });
     });
-    mn.appendChild(box);
   }
-  r.appendChild(mn); r.appendChild(foot());
-  window.scrollTo(0,0);
+  foot(d); window.scrollTo(0,0);
 }
 
 /* ───── 숙제 ───── */
-function hw(){
-  S.view='hw';
-  var m=S.me, r=$('#root'); r.innerHTML='';
-  var mn=el('main');
-  mn.appendChild(topbar('숙제 · 클리닉'));
+function tasks(){
+  var m=S.me; $('#root').innerHTML=''; var d=sheet();
+  bar(d,'숙제 · 클리닉');
 
   var items=m.homeworkList||[];
   if(!items.length){
-    var e=el('div','sec'); e.appendChild(el('div','empty','아직 올라온 숙제가 없습니다.'));
-    mn.appendChild(e);
+    d.appendChild(el('div','none','아직 올라온 숙제가 없습니다.'));
   }else{
-    var box=el('div','sec');
     items.forEach(function(it){
-      var d=el('div','hw');
-      d.appendChild(el('div','wk',it.week));
-      d.appendChild(el('div','ct',it.content));
+      var w=el('div','task');
+      w.appendChild(el('div','wk',it.week));
+      w.appendChild(el('div','body',it.content));
       var done=(m.doneWeeks||[]).indexOf(it.week)>=0;
-      var b=el('button','chk'+(done?' on':''), done?'확인함':'확인했어요');
-      if(!done){
+      var b=el('button','chk'+(done?' done':''), done?'확인함':'확인했어요');
+      if(done){ b.disabled=true; }
+      else{
         b.onclick=function(){
-          b.disabled=true; b.textContent='저장 중…';
-          ask({what:'done', name:m.name, code:m.code, school:m.school, week:it.week}).then(function(d2){
-            if(d2 && d2.success){
-              m.doneWeeks.push(it.week); save();
-              b.className='chk on'; b.textContent='확인함'; b.disabled=true;
-            }else{
-              b.disabled=false; b.textContent='다시 시도';
-            }
-          }).catch(function(){ b.disabled=false; b.textContent='다시 시도'; });
+          b.disabled=true; b.textContent='저장 중';
+          ask({what:'done', name:m.name, code:m.code, school:m.school, week:it.week}).then(function(r){
+            if(r && r.success){ m.doneWeeks.push(it.week); save();
+              b.className='chk done'; b.textContent='확인함'; }
+            else{ b.disabled=false; b.textContent='다시 누르기'; }
+          }).catch(function(){ b.disabled=false; b.textContent='다시 누르기'; });
         };
       }
-      d.appendChild(b);
-      box.appendChild(d);
+      w.appendChild(b); d.appendChild(w);
     });
-    mn.appendChild(box);
   }
-  r.appendChild(mn); r.appendChild(foot());
-  window.scrollTo(0,0);
+  foot(d); window.scrollTo(0,0);
 }
 
 /* ───── 시작 ───── */
