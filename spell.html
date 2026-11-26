@@ -372,11 +372,18 @@ function navBtn(){
   }
 }
 function norm(s){ return String(s).replace(/\s+/g,'').replace(/[.,·]/g,''); }
+function optKey(s){
+  const t=String(s).trim();
+  const h=headMark(t);
+  if(h) return h;
+  const m=t.match(/^(\d{1,2})(?:[\s.):]|$)/);
+  return m ? m[1] : t;
+}
 function optLabel(u,mode){
   if(mode!=='sort' || !u || !u.sortrows || !u.sortrows.length) return o=>o;
   const map={};
-  u.sortrows.forEach(r=>{ const h=headMark(r); if(h) map[h]=String(r).trim(); });
-  return o=>{ const h=headMark(o)||String(o).trim(); return map[h]||o; };
+  u.sortrows.forEach(r=>{ const k=optKey(r); if(k) map[k]=String(r).trim(); });
+  return o=>map[optKey(o)]||o;
 }
 function headMark(s){ const m=String(s).trim().match(/^[\u2460-\u2473\u24D0-\u24E9\u3260-\u327F\u24B6-\u24CF]|^[a-eA-E](?=[\s.):])/); return m?m[0]:null; }
 function isAns(opt, ans){
