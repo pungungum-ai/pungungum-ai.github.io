@@ -346,8 +346,10 @@ function quiz(){
     box.appendChild(i); S.inputs=i;
     setTimeout(()=>i.focus(),60);
   }else{
+    const lab=optLabel(u,S.mode);
     it.opts.forEach(o=>{
-      const b=el('button','opt',o);
+      const b=el('button','opt',lab(o));
+      b.dataset.v=o;
       b.onclick=()=>{ [...box.children].forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); S.picked=o; navBtn(); };
       box.appendChild(b);
     });
@@ -370,6 +372,12 @@ function navBtn(){
   }
 }
 function norm(s){ return String(s).replace(/\s+/g,'').replace(/[.,·]/g,''); }
+function optLabel(u,mode){
+  if(mode!=='sort' || !u || !u.sortrows || !u.sortrows.length) return o=>o;
+  const map={};
+  u.sortrows.forEach(r=>{ const h=headMark(r); if(h) map[h]=String(r).trim(); });
+  return o=>{ const h=headMark(o)||String(o).trim(); return map[h]||o; };
+}
 function headMark(s){ const m=String(s).trim().match(/^[\u2460-\u2473\u24D0-\u24E9\u3260-\u327F\u24B6-\u24CF]|^[a-eA-E](?=[\s.):])/); return m?m[0]:null; }
 function isAns(opt, ans){
   if(opt===ans) return true;
@@ -387,14 +395,15 @@ function submit(){
   else{
     [...$('.opts',c).children].forEach(b=>{
       b.classList.remove('sel'); b.disabled=true;
-      if(isAns(b.textContent, it.ans)) b.classList.add('ok');
-      else if(b.textContent===got) b.classList.add('no');
+      const bv = b.dataset.v!=null ? b.dataset.v : b.textContent;
+      if(isAns(bv, it.ans)) b.classList.add('ok');
+      else if(bv===got) b.classList.add('no');
       else b.classList.add('dim');
     });
   }
   const fb=el('div','fb '+(ok?'ok':'no'));
-  fb.appendChild(el('b','v', ok?'맞았습니다':'틀렸습니다 — 정답 '+it.ans));
-  if(it.why) fb.appendChild(el('div','why','근거 '+it.why));
+  fb.appendChild(el('b','v', ok?'맞았습니다':'틀렸습니다 — 정답 '+optLabel(S.unit,S.mode)(it.ans)));
+  if(it.why && norm(it.why)!==norm(optLabel(S.unit,S.mode)(it.ans))) fb.appendChild(el('div','why','근거 '+it.why));
   if(it.sol){
     const s=el('div','sol');
     if(it.sol.tag) s.appendChild(el('span','tag',it.sol.tag));
