@@ -6,19 +6,19 @@
 <title>문학 작품 분석노트 · 이재식국어학원</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Noto+Serif+KR:wght@400;600;700&family=Noto+Sans+KR:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Hahmlet:wght@400;600;700&family=IBM+Plex+Sans+KR:wght@400;500;600;700&display=swap" rel="stylesheet">
 <style>
 :root{
-  --ink:#1b1b1b; --mid:#4a4a4a; --soft:#8c8c8c; --faint:#b4b4b4;
-  --line:#e4e2dd; --bg:#faf9f7; --card:#fff;
+  --ink:#1B1F23; --mid:#6E7378; --soft:#8D8A82; --faint:#B9B5AA;
+  --line:#E4E0D6; --bg:#FBFAF7; --card:#fff;
   --g:#2b6b4f; --g-l:#eaf3ee; --o:#b35c17; --o-l:#fdf2e8;
-  --red:#c0392b; --red-l:#fdeeec; --blue:#2f5d8a; --blue-l:#eef3f9;
+  --red:#C8443C; --red-l:#FDF3F2; --blue:#2f5d8a; --blue-l:#eef3f9;
   --fs:16px;
 }
 *{box-sizing:border-box;-webkit-tap-highlight-color:transparent}
 html,body{margin:0;padding:0}
 body{
-  font-family:'Noto Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
+  font-family:'IBM Plex Sans KR',-apple-system,BlinkMacSystemFont,sans-serif;
   background:var(--bg);color:var(--ink);font-size:var(--fs);line-height:1.72;
   word-break:keep-all;overflow-wrap:anywhere;
 }
@@ -28,9 +28,9 @@ header{background:var(--card);border-bottom:1px solid var(--line);position:stick
 .hd{max-width:820px;margin:0 auto;padding:11px 16px;display:flex;align-items:center;gap:10px}
 .hd .bk{border:0;background:none;font-size:21px;color:var(--mid);cursor:pointer;padding:3px 6px;margin-left:-6px;display:none}
 .hd .tt{font-weight:700;font-size:15px;flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
-.hd .hm{flex-shrink:0;text-decoration:none;font-size:12px;font-weight:700;color:var(--mid);
-  border:1px solid var(--line);border-radius:999px;padding:4px 11px;line-height:1.5}
-.hd .hm:hover{background:var(--bg)}
+.hd .hm{flex-shrink:0;text-decoration:none;font-size:12.5px;color:var(--mid);
+  border-bottom:1px solid var(--line);padding-bottom:1px;line-height:1.5}
+.hd .hm:hover{color:var(--red);border-bottom-color:currentColor}
 .hd .fs{display:none;gap:4px}
 .hd .fs button{border:1px solid var(--line);background:var(--card);color:var(--mid);
   font:inherit;font-size:12px;font-weight:700;width:30px;height:28px;border-radius:7px;cursor:pointer}
@@ -45,14 +45,14 @@ header{background:var(--card);border-bottom:1px solid var(--line);position:stick
 .witem:active{background:#fcfcfb}
 .wcat{font-size:11px;font-weight:700;color:var(--g);background:var(--g-l);
   padding:3px 9px;border-radius:999px;flex:none}
-.witem b{font-family:'Noto Serif KR',serif;font-size:17px;font-weight:700;display:block}
+.witem b{font-family:'Hahmlet',serif;font-size:17px;font-weight:700;display:block}
 .witem span{font-size:13px;color:var(--soft)}
 
 /* 작품 머리 */
 .whead{background:var(--card);border:1px solid var(--line);border-radius:14px;
   padding:22px 20px;margin:16px 0 4px;text-align:center}
 .whead .cat{font-size:11.5px;color:var(--g);font-weight:700;letter-spacing:.06em}
-.whead h1{font-family:'Noto Serif KR',serif;font-size:27px;margin:7px 0 4px;font-weight:700}
+.whead h1{font-family:'Hahmlet',serif;font-size:27px;margin:7px 0 4px;font-weight:700}
 .whead .au{font-size:14.5px;color:var(--mid)}
 .whead .no{font-size:12px;color:var(--faint);margin-top:7px}
 
@@ -95,7 +95,7 @@ ol.feat li::before{content:counter(f);position:absolute;left:0;top:3px;width:18p
 .blk .bh{font-size:13px;font-weight:700;color:var(--blue);background:var(--blue-l);
   display:inline-block;padding:3px 10px;border-radius:999px;margin-bottom:9px}
 .poem{background:#fbfaf7;border:1px solid #efece5;border-radius:11px;padding:14px 16px}
-.poem .ln{font-family:'Noto Serif KR',serif;font-size:16.5px;line-height:1.75;margin-top:11px}
+.poem .ln{font-family:'Hahmlet',serif;font-size:16.5px;line-height:1.75;margin-top:11px}
 .poem .ln:first-child{margin-top:0}
 .poem .nn{font-size:12.3px;color:var(--o);margin-top:2px;padding-left:12px;border-left:2px solid #e8d9c6}
 .gl{margin-top:11px}
@@ -116,7 +116,7 @@ ol.num li::before{content:counter(n);position:absolute;left:0;top:2px;width:19px
 .dev .n{display:flex;align-items:center;gap:8px;font-weight:700;font-size:14.8px}
 .dev .n i{font-style:normal;background:var(--o);color:#fff;font-size:11px;min-width:20px;
   text-align:center;padding:1px 5px;border-radius:6px}
-.dev .e{font-family:'Noto Serif KR',serif;font-size:14.5px;background:#fbfaf7;
+.dev .e{font-family:'Hahmlet',serif;font-size:14.5px;background:#fbfaf7;
   border-radius:7px;padding:7px 11px;margin:8px 0 7px}
 .dev .f{font-size:14px;color:var(--mid)}
 
@@ -131,7 +131,7 @@ ol.num li::before{content:counter(n);position:absolute;left:0;top:2px;width:19px
 .cont{background:var(--blue-l);border-radius:11px;padding:14px 16px;margin-top:13px}
 .cont .ch{font-weight:700;font-size:14.3px;color:var(--blue);margin-bottom:8px}
 .cont .ci{font-size:14.2px;margin:7px 0}
-.cont .ci b{display:block;font-family:'Noto Serif KR',serif}
+.cont .ci b{display:block;font-family:'Hahmlet',serif}
 .cont .ci span{color:var(--mid);font-size:13.6px}
 
 /* 핵심 정리 */
@@ -168,7 +168,7 @@ ol.num li::before{content:counter(n);position:absolute;left:0;top:2px;width:19px
   <button class="bk" id="bk" aria-label="뒤로">←</button>
   <div class="tt" id="tt">작품 분석 노트</div>
   <div class="fs" id="fs"><button id="fsm">가−</button><button id="fsp">가+</button></div>
-  <a class="hm" href="index.html">홈</a>
+  <a class="hm" href="index.html">← 처음으로</a>
 </div></header>
 <div id="app" class="wrap"></div>
 <script src="lit-data.js"></script>
