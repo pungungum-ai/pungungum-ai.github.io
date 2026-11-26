@@ -123,7 +123,7 @@ var API = "https://script.google.com/macros/s/AKfycbx_9FAV1gPLUuwPcmP1rYd4_ASLrK
 
 var KEY = 'ijs_user';
 var NAME = '이재식국어학원';
-var S = { me:null };
+var S = { me:null, view:'gate' };
 
 function $(s,r){ return (r||document).querySelector(s); }
 function el(t,c,x){ var e=document.createElement(t); if(c)e.className=c; if(x!=null)e.textContent=x; return e; }
@@ -165,6 +165,7 @@ function foot(d){ d.appendChild(el('p','foot','수업에서 쓴 자료를 모아
 
 /* ───── 로그인 ───── */
 function gate(msg){
+  S.view='gate';
   $('#root').innerHTML=''; var d=sheet();
   var h=el('div','head'); h.appendChild(titleGrid(true));
   h.appendChild(el('p','tagline','수업에서 다룬 작품과 문법을 휴대폰으로 다시 봅니다.'));
@@ -209,6 +210,7 @@ function gate(msg){
 
 /* ───── 첫 화면 ───── */
 function home(){
+  S.view='home';
   var m=S.me; $('#root').innerHTML=''; var d=sheet();
 
   var h=el('div','head'); h.appendChild(titleGrid(false));
@@ -263,6 +265,7 @@ function bar(d,title){
 
 /* ───── 자료실 · 영상 ───── */
 function listing(kind){
+  S.view='list';
   var m=S.me; $('#root').innerHTML=''; var d=sheet();
   bar(d, kind==='files' ? '수업 자료실' : '수업 영상');
 
@@ -295,6 +298,7 @@ function listing(kind){
 
 /* ───── 숙제 ───── */
 function tasks(){
+  S.view='hw';
   var m=S.me; $('#root').innerHTML=''; var d=sheet();
   bar(d,'숙제 · 클리닉');
 
@@ -325,9 +329,31 @@ function tasks(){
   foot(d); window.scrollTo(0,0);
 }
 
+/* ───── 들어올 때마다 최신 자료로 맞춘다 ───── */
+/* 저장해 둔 것으로 화면을 먼저 띄우고, 뒤에서 조용히 새로 받아온다.
+   그래야 선생님이 시트에 올린 숙제·자료가 바로 보인다. */
+function refresh(){
+  var m=S.me; if(!m || !m.name || !m.code) return;
+  ask({what:'login', name:m.name, code:m.code}).then(function(r){
+    if(!S.me) return;
+    if(r && r.success){
+      var done=(r.doneWeeks||[]).slice();
+      (m.doneWeeks||[]).forEach(function(w){ if(done.indexOf(w)<0) done.push(w); });
+      S.me={ name:r.name, school:r.school, code:m.code, files:r.files||[], videos:r.videos||[],
+             homeworkList:r.homeworkList||[], doneWeeks:done, allow:r.allow||{lit:null,spell:null} };
+      save();
+      if(S.view==='home') home();
+    }else if(r && r.success===false && String(r.message||'').indexOf('일치하지 않습니다')>=0){
+      /* 명단에서 빠졌거나 번호가 바뀐 경우에만 내보낸다.
+         서버가 잠깐 말썽인 경우까지 로그아웃시키면 안 된다. */
+      wipe(); S.me=null; gate(r.message);
+    }
+  }).catch(function(){ /* 연결이 안 되면 저장해 둔 것으로 계속 쓴다 */ });
+}
+
 /* ───── 시작 ───── */
 S.me=load();
-if(S.me && S.me.name) home(); else gate();
+if(S.me && S.me.name){ home(); refresh(); } else gate();
 </script>
 </body>
 </html>
