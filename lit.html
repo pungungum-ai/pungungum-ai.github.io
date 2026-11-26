@@ -173,6 +173,25 @@ ol.num li::before{content:counter(n);position:absolute;left:0;top:2px;width:19px
 <div id="app" class="wrap"></div>
 <script src="lit-data.js"></script>
 <script>
+
+/* ── 첫 화면(index.html)에서 저장한 로그인 정보를 함께 쓴다 ── */
+var IJS_KEY='ijs_user';
+function ijsUser(){
+  try{ var u=JSON.parse(localStorage.getItem(IJS_KEY)||'null'); return (u&&u.name)?u:null; }catch(e){ return null; }
+}
+function ijsAllow(kind){
+  var u=ijsUser();
+  if(!u || !u.allow) return null;
+  var a=u.allow[kind];
+  return (a && typeof a.length==='number') ? a : null;   /* null 이면 전부 공개 */
+}
+function ijsOpen(kind,title){
+  var a=ijsAllow(kind);
+  if(a===null) return true;
+  var t=String(title).replace(/\s+/g,'');
+  for(var i=0;i<a.length;i++){ if(String(a[i]).replace(/\s+/g,'')===t) return true; }
+  return false;
+}
 const $=(s,r)=>(r||document).querySelector(s);
 const el=(t,c,x)=>{const e=document.createElement(t);if(c)e.className=c;if(x!=null)e.textContent=x;return e;};
 let FS=16;
@@ -370,8 +389,13 @@ window.addEventListener('hashchange',()=>{
   const h=location.hash.slice(1);
   if(h && LIT.works.some(w=>w.id===h)) open(h); else home();
 });
-const h0=location.hash.slice(1);
-if(h0 && LIT.works.some(w=>w.id===h0)) open(h0); else home();
+if(!ijsUser()){
+  location.replace('index.html');
+}else{
+  LIT.works = LIT.works.filter(w=>ijsOpen('lit', w.title));
+  const h0=location.hash.slice(1);
+  if(h0 && LIT.works.some(w=>w.id===h0)) open(h0); else home();
+}
 </script>
 </body>
 </html>
