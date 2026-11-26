@@ -109,8 +109,8 @@ ol.feat li::before{content:counter(f);position:absolute;left:0;top:0;
 .poem .ln:first-child{margin-top:0}
 .poem .nn{font-size:.78em;color:var(--mid);margin:3px 0 0 0;line-height:1.6}
 .gl{margin-top:16px}
-.gl .g{display:flex;gap:10px;margin:9px 0;font-size:.92em}
-.gl .g b{flex:none;font-family:var(--serif);font-weight:600}
+.gl .g{margin:10px 0;font-size:.92em;line-height:1.7}
+.gl .g b{font-family:var(--serif);font-weight:600;margin-right:.35em}
 .gl .g b::before{content:'‘'}
 .gl .g b::after{content:'’'}
 .gl .g span{color:var(--mid)}
@@ -175,6 +175,17 @@ ol.num li::before{content:counter(n);position:absolute;left:0;top:0;
 .rst:hover{background:var(--ink);color:var(--paper)}
 
 .foot{text-align:center;color:var(--faint);font-size:.78em;margin-top:30px}
+/* 화면이 넓으면 구절 풀이를 원문 오른쪽에 둔다 */
+@media(min-width:900px){
+  .wrap{max-width:880px}
+  .hd{max-width:880px}
+  .blk{display:grid;grid-template-columns:minmax(0,1.05fr) minmax(0,1fr);
+    column-gap:36px;align-items:start}
+  .blk .bh{grid-column:1/-1}
+  .poem{grid-column:1}
+  .gl{grid-column:2;margin-top:0;padding-top:3px}
+  .gl .g{margin:0 0 13px}
+}
 @media(max-width:480px){ :root{--fs:15.5px} .wrap{padding:0 16px 72px} .hd{padding:11px 16px} }
 @media (prefers-reduced-motion:reduce){*{transition:none !important}}
 </style>
