@@ -172,6 +172,25 @@ const $ = (s,r)=>(r||document).querySelector(s);
 const el = (t,c,x)=>{const e=document.createElement(t); if(c)e.className=c; if(x!=null)e.textContent=x; return e;};
 const MODES = {concept:'개념', practice:'연습', sort:'갈래', fill:'채우기', exam:'기출'};
 
+
+/* ── 첫 화면(index.html)에서 저장한 로그인 정보를 함께 쓴다 ── */
+var IJS_KEY='ijs_user';
+function ijsUser(){
+  try{ var u=JSON.parse(localStorage.getItem(IJS_KEY)||'null'); return (u&&u.name)?u:null; }catch(e){ return null; }
+}
+function ijsAllow(kind){
+  var u=ijsUser();
+  if(!u || !u.allow) return null;
+  var a=u.allow[kind];
+  return (a && typeof a.length==='number') ? a : null;   /* null 이면 전부 공개 */
+}
+function ijsOpen(kind,title){
+  var a=ijsAllow(kind);
+  if(a===null) return true;
+  var t=String(title).replace(/\s+/g,'');
+  for(var i=0;i<a.length;i++){ if(String(a[i]).replace(/\s+/g,'')===t) return true; }
+  return false;
+}
 function store(k,v){ try{ if(v===undefined) return localStorage.getItem(k); localStorage.setItem(k,v);}catch(e){ return null; } }
 function prog(uid){ try{ return JSON.parse(store('p_'+uid)||'{}'); }catch(e){ return {}; } }
 function saveProg(uid,o){ store('p_'+uid, JSON.stringify(o)); }
@@ -222,7 +241,7 @@ function home(){
   a.appendChild(el('h2',null,'단원을 고르세요'));
   a.appendChild(el('p','lead','개념을 읽고 연습 문제를 푼 다음, 기출 문항으로 확인합니다.'));
   const list=el('div','ulist');
-  S.data.units.forEach((u,ix)=>{
+  S.data.units.filter(u=>ijsOpen('spell',u.title)).forEach((u,ix)=>{
     const p=prog(u.id), tot=u.practice.length+u.sort.length+u.fillkeys.length+u.exam.length;
     const dn=Object.keys(p).length;
     const it=el('div','uitem');
@@ -506,8 +525,9 @@ window.addEventListener('hashchange',()=>{ if(!location.hash && S.unit) home(); 
 
 fetch('spell-data.json').then(r=>r.json()).then(d=>{
   S.data=d;
-  let u=null; try{ u=JSON.parse(store('user')||'null'); }catch(e){}
-  if(u && u.name){ S.user=u; home(); } else gate();
+  const iu=ijsUser();
+  if(iu){ S.user={name:iu.name, school:iu.school, code:iu.code}; home(); }
+  else{ location.replace('index.html'); }
 }).catch(()=>{
   $('#app').innerHTML='<div class="card">자료를 불러오지 못했습니다. 새로고침해 주세요.</div>';
 });
