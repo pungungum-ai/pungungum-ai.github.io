@@ -475,9 +475,12 @@ function submit(){
   if(AUTO[S.mode]){
     /* 맞으면 곧장, 틀리면 까닭을 읽을 만큼 쉬었다가 넘어간다.
        기다리는 동안 띠가 줄어 언제 넘어가는지 보이고, 눌러서 먼저 넘길 수도 있다. */
-    const wait = ok ? 1500 : 3200;
-    const t=el('div','tick'); const ti=el('i'); t.appendChild(ti); fb.appendChild(t);
-    requestAnimationFrame(()=>{ ti.style.transition='width '+wait+'ms linear'; ti.style.width='0%'; });
+    /* 맞으면 초록 표시만 스치고 곧장, 틀리면 까닭을 읽을 만큼 쉰다. */
+    const wait = ok ? 400 : 3200;
+    if(!ok){
+      const t=el('div','tick'); const ti=el('i'); t.appendChild(ti); fb.appendChild(t);
+      requestAnimationFrame(()=>{ ti.style.transition='width '+wait+'ms linear'; ti.style.width='0%'; });
+    }
     clearTimer();
     TIMER=setTimeout(goNext, wait);
   }
