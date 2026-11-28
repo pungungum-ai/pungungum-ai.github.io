@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<title>이재식국어학원</title>
-<meta name="description" content="이재식국어학원 학습 자료 — 문학 작품 분석노트, 한글 맞춤법 학습지, 수업 자료실">
+<title>엄쌤이 알려주는 국어</title>
+<meta name="description" content="엄쌤이 알려주는 국어 — 문학 작품 분석노트, 한글 맞춤법 학습지, 수업 자료실">
 <meta name="theme-color" content="#FBFAF7">
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FBFAF7'/%3E%3Crect x='8' y='8' width='84' height='84' fill='none' stroke='%23C8443C' stroke-width='5'/%3E%3Ctext x='50' y='54' font-size='52' font-family='serif' font-weight='700' fill='%231B1F23' text-anchor='middle' dominant-baseline='central'%3E국%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Crect width='100' height='100' fill='%23FBFAF7'/%3E%3Crect x='8' y='8' width='84' height='84' fill='none' stroke='%23C8443C' stroke-width='5'/%3E%3Ctext x='50' y='54' font-size='52' font-family='serif' font-weight='700' fill='%231B1F23' text-anchor='middle' dominant-baseline='central'%3E국%3C/text%3E%3C/svg%3E">
@@ -35,7 +35,7 @@ button{font:inherit;color:inherit}
 .head{padding:calc(30px + env(safe-area-inset-top)) 0 0}
 .grid{display:grid;grid-template-columns:repeat(7,1fr);border:1.5px solid var(--ink);
   border-right:0;background:var(--paper)}
-.grid span{aspect-ratio:1;display:flex;align-items:center;justify-content:center;
+.grid span{aspect-ratio:1;display:flex;align-items:center;justify-content:center;min-width:0;
   border-right:1.5px solid var(--ink);font-family:var(--serif);font-weight:700;
   font-size:clamp(1.3rem,6.4vw,2rem);line-height:1;color:var(--ink)}
 .grid.ani span{opacity:0;animation:ink .34s ease-out forwards}
@@ -122,7 +122,7 @@ var API = "https://script.google.com/macros/s/AKfycbx_9FAV1gPLUuwPcmP1rYd4_ASLrK
 /* ============================================================================= */
 
 var KEY = 'ijs_user';
-var NAME = '이재식국어학원';
+var NAME = '엄쌤이 알려주는 국어';
 var S = { me:null, view:'gate' };
 
 function $(s,r){ return (r||document).querySelector(s); }
@@ -152,7 +152,9 @@ function ask(params){
 function titleGrid(animate){
   var g=el('div','grid'+(animate?' ani':''));
   g.setAttribute('aria-label',NAME);
-  NAME.split('').forEach(function(ch,i){
+  var ch2=NAME.replace(/\s+/g,'').split('');
+  g.style.gridTemplateColumns='repeat('+ch2.length+',1fr)';
+  ch2.forEach(function(ch,i){
     var c=el('span',null,ch);
     c.setAttribute('aria-hidden','true');
     if(animate) c.style.animationDelay=(i*55)+'ms';
