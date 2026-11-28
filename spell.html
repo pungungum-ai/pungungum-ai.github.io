@@ -109,6 +109,10 @@ input.txt.no{border-color:var(--red);background:#fdeef0}
 
 /* ── 채점 ── */
 .fb{margin-top:12px;border-radius:10px;padding:12px 14px;font-size:14px;line-height:1.6}
+.tick{margin-top:10px;height:3px;border-radius:2px;background:rgba(0,0,0,.08);overflow:hidden}
+.tick i{display:block;height:100%;width:100%;background:currentColor;opacity:.45}
+.hint{flex:1;text-align:center;font-size:13px;color:var(--soft);padding:13px 0}
+@media (prefers-reduced-motion:reduce){ .tick i{transition:none !important} }
 .fb.ok{background:var(--g-l);border:1px solid #bfe0cd}
 .fb.no{background:#fdeef0;border:1px solid #f3c6cd}
 .fb b.v{display:block;margin-bottom:5px}
@@ -233,6 +237,7 @@ function gate(){
 
 /* ── 단원 목록 ── */
 function home(){
+  clearTimer();
   S.unit=null; S.mode=null; location.hash='';
   $('#nav').style.display='none'; $('#bk').style.display='none';
   $('#tt').textContent='한글 맞춤법 학습지';
@@ -279,6 +284,7 @@ function openUnit(id){
   showTabs('concept');
 }
 function showTabs(mode){
+  clearTimer();
   S.mode=mode; S.i=0; S.picked=null;
   const a=$('#app'); a.className='wrap'; a.innerHTML='';
   const u=S.unit;
@@ -333,7 +339,17 @@ function fillItems(u){
 }
 
 /* ── 문제 풀기 ── */
+/* ── 바로 채점하고 바로 넘어가기 ──
+   연습·갈래·채우기에서는 보기를 고르는 순간 채점한다.
+   맞으면 곧장, 틀리면 까닭을 읽을 만큼 쉬었다가 다음 문제로 넘어간다.
+   기출은 해설이 길어 예전처럼 직접 눌러 넘긴다. */
+const AUTO = {practice:true, sort:true, fill:true};
+let TIMER = null;
+function clearTimer(){ if(TIMER){ clearTimeout(TIMER); TIMER=null; } }
+function goNext(){ clearTimer(); S.graded=false; S.i++; quiz(); }
+
 function quiz(){
+  clearTimer();
   const a=$('#app');
   [...a.querySelectorAll('.qcard,.prog')].forEach(n=>n.remove());
   const u=S.unit, it=S.items[S.i];
@@ -369,7 +385,10 @@ function quiz(){
     it.opts.forEach(o=>{
       const b=el('button','opt',lab(o));
       b.dataset.v=o;
-      b.onclick=()=>{ [...box.children].forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); S.picked=o; navBtn(); };
+      b.onclick=()=>{
+        [...box.children].forEach(x=>x.classList.remove('sel')); b.classList.add('sel'); S.picked=o;
+        if(AUTO[S.mode]) submit(); else navBtn();
+      };
       box.appendChild(b);
     });
   }
@@ -379,14 +398,16 @@ function quiz(){
 }
 function navBtn(){
   const n=$('#navin'); n.innerHTML='';
-  const graded = S.graded;
+  const graded = S.graded, it=S.items[S.i];
   if(graded){
     const b=el('button','btn', S.i+1>=S.items.length?'결과 보기':'다음 문제');
-    b.onclick=()=>{ S.graded=false; S.i++; quiz(); };
+    b.onclick=goNext;
     n.appendChild(b);
+  }else if(AUTO[S.mode] && it && it.t!=='write'){
+    n.appendChild(el('div','hint','보기를 고르면 바로 채점됩니다'));
   }else{
     const b=el('button','btn','채점하기');
-    if(S.items[S.i] && S.items[S.i].t!=='write' && !S.picked) b.disabled=true;
+    if(it && it.t!=='write' && !S.picked) b.disabled=true;
     b.onclick=submit; n.appendChild(b);
   }
 }
@@ -450,6 +471,16 @@ function submit(){
   const p=prog(S.unit.id); p[S.mode+':'+it.idx]= ok?1:0; saveProg(S.unit.id,p);
   S.graded=true; navBtn();
   fb.scrollIntoView({behavior:'smooth', block:'nearest'});
+
+  if(AUTO[S.mode]){
+    /* 맞으면 곧장, 틀리면 까닭을 읽을 만큼 쉬었다가 넘어간다.
+       기다리는 동안 띠가 줄어 언제 넘어가는지 보이고, 눌러서 먼저 넘길 수도 있다. */
+    const wait = ok ? 1500 : 3200;
+    const t=el('div','tick'); const ti=el('i'); t.appendChild(ti); fb.appendChild(t);
+    requestAnimationFrame(()=>{ ti.style.transition='width '+wait+'ms linear'; ti.style.width='0%'; });
+    clearTimer();
+    TIMER=setTimeout(goNext, wait);
+  }
 }
 
 /* ── 결과표 ── */
