@@ -382,7 +382,7 @@ function quiz(){
     setTimeout(()=>i.focus(),60);
   }else{
     const lab=optLabel(u,S.mode);
-    it.opts.forEach(o=>{
+    optOrder(it,S.mode).forEach(o=>{
       const b=el('button','opt',lab(o));
       b.dataset.v=o;
       b.onclick=()=>{
@@ -424,6 +424,16 @@ function optLabel(u,mode){
   const map={};
   u.sortrows.forEach(r=>{ const k=optKey(r); if(k) map[k]=String(r).trim(); });
   return o=>map[optKey(o)]||o;
+}
+/* 보기 순서 — 정답이 늘 맨 위에 오지 않도록 문항마다 다르게 돌린다.
+   문제 글자에서 뽑은 값이라 같은 문항은 언제나 같은 순서가 된다. */
+function strHash(s){ let h=0; s=String(s); for(let i=0;i<s.length;i++) h=(h*31+s.charCodeAt(i))|0; return Math.abs(h); }
+function optOrder(it, mode){
+  const o=it.opts||[];
+  if(mode!=='practice' || o.length<2) return o;
+  for(let i=0;i<o.length;i++){ if(optKey(o[i])!==String(o[i]).trim()) return o; }  /* ①㉠1 같은 번호가 붙은 보기는 그대로 둔다 */
+  const k=strHash(it.q+'#'+o.join('|')+'#'+it.q.length)%o.length;
+  return o.slice(k).concat(o.slice(0,k));
 }
 function headMark(s){ const m=String(s).trim().match(/^[\u2460-\u2473\u24D0-\u24E9\u3260-\u327F\u24B6-\u24CF]|^[a-eA-E](?=[\s.):])/); return m?m[0]:null; }
 function isAns(opt, ans){
